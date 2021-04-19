@@ -1,0 +1,459 @@
+Classfile /F:/MyCode/mycode/letter-song/hello-learn/target/classes/com/soranico/jmh/JmhSwitchAndIf.class
+  Last modified 2020-7-5; size 3113 bytes
+  MD5 checksum ea54dd12de7fd02fa65dfc965f5b5af5
+  Compiled from "JmhSwitchAndIf.java"
+public class com.soranico.jmh.JmhSwitchAndIf
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+    #1 = Methodref          #22.#78       // java/lang/Object."<init>":()V
+    #2 = Class              #79           // org/openjdk/jmh/runner/options/OptionsBuilder
+    #3 = Methodref          #2.#78        // org/openjdk/jmh/runner/options/OptionsBuilder."<init>":()V
+    #4 = Class              #80           // com/soranico/jmh/JmhSwitchAndIf
+    #5 = Methodref          #81.#82       // java/lang/Class.getSimpleName:()Ljava/lang/String;
+    #6 = Methodref          #2.#83        // org/openjdk/jmh/runner/options/OptionsBuilder.include:(Ljava/lang/String;)Lorg/openjdk/jmh/runner/options/ChainedOptionsBuilder;
+    #7 = InterfaceMethodref #84.#85       // org/openjdk/jmh/runner/options/ChainedOptionsBuilder.build:()Lorg/openjdk/jmh/runner/options/Options;
+    #8 = Class              #86           // org/openjdk/jmh/runner/Runner
+    #9 = Methodref          #8.#87        // org/openjdk/jmh/runner/Runner."<init>":(Lorg/openjdk/jmh/runner/options/Options;)V
+   #10 = Methodref          #8.#88        // org/openjdk/jmh/runner/Runner.run:()Ljava/util/Collection;
+   #11 = Fieldref           #4.#89        // com/soranico/jmh/JmhSwitchAndIf.kano:Ljava/lang/String;
+   #12 = Methodref          #90.#91       // java/lang/String.hashCode:()I
+   #13 = String             #92           // letter
+   #14 = Methodref          #90.#93       // java/lang/String.equals:(Ljava/lang/Object;)Z
+   #15 = String             #94           // song
+   #16 = String             #95           // hello
+   #17 = String             #96           // how
+   #18 = String             #97           // are
+   #19 = String             #98           // you
+   #20 = String             #23           // kano
+   #21 = Methodref          #99.#100      // org/openjdk/jmh/infra/Blackhole.consume:(Ljava/lang/Object;)V
+   #22 = Class              #101          // java/lang/Object
+   #23 = Utf8               kano
+   #24 = Utf8               Ljava/lang/String;
+   #25 = Utf8               <init>
+   #26 = Utf8               ()V
+   #27 = Utf8               Code
+   #28 = Utf8               LineNumberTable
+   #29 = Utf8               LocalVariableTable
+   #30 = Utf8               this
+   #31 = Utf8               Lcom/soranico/jmh/JmhSwitchAndIf;
+   #32 = Utf8               main
+   #33 = Utf8               ([Ljava/lang/String;)V
+   #34 = Utf8               args
+   #35 = Utf8               [Ljava/lang/String;
+   #36 = Utf8               opt
+   #37 = Utf8               Lorg/openjdk/jmh/runner/options/Options;
+   #38 = Utf8               Exceptions
+   #39 = Class              #102          // org/openjdk/jmh/runner/RunnerException
+   #40 = Utf8               MethodParameters
+   #41 = Utf8               switchTest
+   #42 = Utf8               (Lorg/openjdk/jmh/infra/Blackhole;)V
+   #43 = Utf8               result
+   #44 = Utf8               blackhole
+   #45 = Utf8               Lorg/openjdk/jmh/infra/Blackhole;
+   #46 = Utf8               StackMapTable
+   #47 = Class              #103          // java/lang/String
+   #48 = Class              #80           // com/soranico/jmh/JmhSwitchAndIf
+   #49 = Class              #104          // org/openjdk/jmh/infra/Blackhole
+   #50 = Utf8               RuntimeVisibleAnnotations
+   #51 = Utf8               Lorg/openjdk/jmh/annotations/Benchmark;
+   #52 = Utf8               ifTest
+   #53 = Utf8               <clinit>
+   #54 = Utf8               SourceFile
+   #55 = Utf8               JmhSwitchAndIf.java
+   #56 = Utf8               Lorg/openjdk/jmh/annotations/BenchmarkMode;
+   #57 = Utf8               value
+   #58 = Utf8               Lorg/openjdk/jmh/annotations/Mode;
+   #59 = Utf8               AverageTime
+   #60 = Utf8               Lorg/openjdk/jmh/annotations/OutputTimeUnit;
+   #61 = Utf8               Ljava/util/concurrent/TimeUnit;
+   #62 = Utf8               NANOSECONDS
+   #63 = Utf8               Lorg/openjdk/jmh/annotations/Warmup;
+   #64 = Utf8               iterations
+   #65 = Integer            2
+   #66 = Utf8               time
+   #67 = Integer            1
+   #68 = Utf8               timeUnit
+   #69 = Utf8               SECONDS
+   #70 = Utf8               Lorg/openjdk/jmh/annotations/Measurement;
+   #71 = Integer            5
+   #72 = Integer            3
+   #73 = Utf8               Lorg/openjdk/jmh/annotations/Fork;
+   #74 = Utf8               Lorg/openjdk/jmh/annotations/Threads;
+   #75 = Utf8               Lorg/openjdk/jmh/annotations/State;
+   #76 = Utf8               Lorg/openjdk/jmh/annotations/Scope;
+   #77 = Utf8               Thread
+   #78 = NameAndType        #25:#26       // "<init>":()V
+   #79 = Utf8               org/openjdk/jmh/runner/options/OptionsBuilder
+   #80 = Utf8               com/soranico/jmh/JmhSwitchAndIf
+   #81 = Class              #105          // java/lang/Class
+   #82 = NameAndType        #106:#107     // getSimpleName:()Ljava/lang/String;
+   #83 = NameAndType        #108:#109     // include:(Ljava/lang/String;)Lorg/openjdk/jmh/runner/options/ChainedOptionsBuilder;
+   #84 = Class              #110          // org/openjdk/jmh/runner/options/ChainedOptionsBuilder
+   #85 = NameAndType        #111:#112     // build:()Lorg/openjdk/jmh/runner/options/Options;
+   #86 = Utf8               org/openjdk/jmh/runner/Runner
+   #87 = NameAndType        #25:#113      // "<init>":(Lorg/openjdk/jmh/runner/options/Options;)V
+   #88 = NameAndType        #114:#115     // run:()Ljava/util/Collection;
+   #89 = NameAndType        #23:#24       // kano:Ljava/lang/String;
+   #90 = Class              #103          // java/lang/String
+   #91 = NameAndType        #116:#117     // hashCode:()I
+   #92 = Utf8               letter
+   #93 = NameAndType        #118:#119     // equals:(Ljava/lang/Object;)Z
+   #94 = Utf8               song
+   #95 = Utf8               hello
+   #96 = Utf8               how
+   #97 = Utf8               are
+   #98 = Utf8               you
+   #99 = Class              #104          // org/openjdk/jmh/infra/Blackhole
+  #100 = NameAndType        #120:#121     // consume:(Ljava/lang/Object;)V
+  #101 = Utf8               java/lang/Object
+  #102 = Utf8               org/openjdk/jmh/runner/RunnerException
+  #103 = Utf8               java/lang/String
+  #104 = Utf8               org/openjdk/jmh/infra/Blackhole
+  #105 = Utf8               java/lang/Class
+  #106 = Utf8               getSimpleName
+  #107 = Utf8               ()Ljava/lang/String;
+  #108 = Utf8               include
+  #109 = Utf8               (Ljava/lang/String;)Lorg/openjdk/jmh/runner/options/ChainedOptionsBuilder;
+  #110 = Utf8               org/openjdk/jmh/runner/options/ChainedOptionsBuilder
+  #111 = Utf8               build
+  #112 = Utf8               ()Lorg/openjdk/jmh/runner/options/Options;
+  #113 = Utf8               (Lorg/openjdk/jmh/runner/options/Options;)V
+  #114 = Utf8               run
+  #115 = Utf8               ()Ljava/util/Collection;
+  #116 = Utf8               hashCode
+  #117 = Utf8               ()I
+  #118 = Utf8               equals
+  #119 = Utf8               (Ljava/lang/Object;)Z
+  #120 = Utf8               consume
+  #121 = Utf8               (Ljava/lang/Object;)V
+{
+  public com.soranico.jmh.JmhSwitchAndIf();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 41: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/soranico/jmh/JmhSwitchAndIf;
+
+  public static void main(java.lang.String[]) throws org.openjdk.jmh.runner.RunnerException;
+    descriptor: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=2, args_size=1
+         0: new           #2                  // class org/openjdk/jmh/runner/options/OptionsBuilder
+         3: dup
+         4: invokespecial #3                  // Method org/openjdk/jmh/runner/options/OptionsBuilder."<init>":()V
+         7: ldc           #4                  // class com/soranico/jmh/JmhSwitchAndIf
+         9: invokevirtual #5                  // Method java/lang/Class.getSimpleName:()Ljava/lang/String;
+        12: invokevirtual #6                  // Method org/openjdk/jmh/runner/options/OptionsBuilder.include:(Ljava/lang/String;)Lorg/openjdk/jmh/runner/options/ChainedOptionsBuilder;
+        15: invokeinterface #7,  1            // InterfaceMethod org/openjdk/jmh/runner/options/ChainedOptionsBuilder.build:()Lorg/openjdk/jmh/runner/options/Options;
+        20: astore_1
+        21: new           #8                  // class org/openjdk/jmh/runner/Runner
+        24: dup
+        25: aload_1
+        26: invokespecial #9                  // Method org/openjdk/jmh/runner/Runner."<init>":(Lorg/openjdk/jmh/runner/options/Options;)V
+        29: invokevirtual #10                 // Method org/openjdk/jmh/runner/Runner.run:()Ljava/util/Collection;
+        32: pop
+        33: return
+      LineNumberTable:
+        line 47: 0
+        line 48: 9
+        line 49: 15
+        line 50: 21
+        line 51: 33
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      34     0  args   [Ljava/lang/String;
+           21      13     1   opt   Lorg/openjdk/jmh/runner/options/Options;
+    Exceptions:
+      throws org.openjdk.jmh.runner.RunnerException
+    MethodParameters:
+      Name                           Flags
+      args
+
+  public void switchTest(org.openjdk.jmh.infra.Blackhole);
+    descriptor: (Lorg/openjdk/jmh/infra/Blackhole;)V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=5, args_size=2
+         0: getstatic     #11                 // Field kano:Ljava/lang/String;
+         3: astore_3
+         4: iconst_m1
+         5: istore        4
+         7: aload_3
+         8: invokevirtual #12                 // Method java/lang/String.hashCode:()I
+        11: lookupswitch  { // 6
+
+             -1106172890: 68
+
+                   96852: 128
+
+                  103504: 113
+
+                  119839: 143
+
+                 3536149: 83
+
+                99162322: 98
+                 default: 155
+            }
+        68: aload_3
+        69: ldc           #13                 // String letter
+        71: invokevirtual #14                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        74: ifeq          155
+        77: iconst_0
+        78: istore        4
+        80: goto          155
+        83: aload_3
+        84: ldc           #15                 // String song
+        86: invokevirtual #14                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        89: ifeq          155
+        92: iconst_1
+        93: istore        4
+        95: goto          155
+        98: aload_3
+        99: ldc           #16                 // String hello
+       101: invokevirtual #14                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       104: ifeq          155
+       107: iconst_2
+       108: istore        4
+       110: goto          155
+       113: aload_3
+       114: ldc           #17                 // String how
+       116: invokevirtual #14                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       119: ifeq          155
+       122: iconst_3
+       123: istore        4
+       125: goto          155
+       128: aload_3
+       129: ldc           #18                 // String are
+       131: invokevirtual #14                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       134: ifeq          155
+       137: iconst_4
+       138: istore        4
+       140: goto          155
+       143: aload_3
+       144: ldc           #19                 // String you
+       146: invokevirtual #14                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       149: ifeq          155
+       152: iconst_5
+       153: istore        4
+       155: iload         4
+       157: tableswitch   { // 0 to 5
+
+                       0: 196
+
+                       1: 202
+
+                       2: 208
+
+                       3: 214
+
+                       4: 220
+
+                       5: 226
+                 default: 232
+            }
+       196: ldc           #13                 // String letter
+       198: astore_2
+       199: goto          235
+       202: ldc           #15                 // String song
+       204: astore_2
+       205: goto          235
+       208: ldc           #16                 // String hello
+       210: astore_2
+       211: goto          235
+       214: ldc           #17                 // String how
+       216: astore_2
+       217: goto          235
+       220: ldc           #18                 // String are
+       222: astore_2
+       223: goto          235
+       226: ldc           #19                 // String you
+       228: astore_2
+       229: goto          235
+       232: ldc           #20                 // String kano
+       234: astore_2
+       235: aload_1
+       236: aload_2
+       237: invokevirtual #21                 // Method org/openjdk/jmh/infra/Blackhole.consume:(Ljava/lang/Object;)V
+       240: return
+      LineNumberTable:
+        line 57: 0
+        line 59: 196
+        line 60: 199
+        line 62: 202
+        line 63: 205
+        line 65: 208
+        line 66: 211
+        line 68: 214
+        line 69: 217
+        line 71: 220
+        line 72: 223
+        line 74: 226
+        line 75: 229
+        line 77: 232
+        line 80: 235
+        line 81: 240
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          199       3     2 result   Ljava/lang/String;
+          205       3     2 result   Ljava/lang/String;
+          211       3     2 result   Ljava/lang/String;
+          217       3     2 result   Ljava/lang/String;
+          223       3     2 result   Ljava/lang/String;
+          229       3     2 result   Ljava/lang/String;
+            0     241     0  this   Lcom/soranico/jmh/JmhSwitchAndIf;
+            0     241     1 blackhole   Lorg/openjdk/jmh/infra/Blackhole;
+          235       6     2 result   Ljava/lang/String;
+      StackMapTable: number_of_entries = 15
+        frame_type = 254 /* append */
+          offset_delta = 68
+          locals = [ top, class java/lang/String, int ]
+        frame_type = 14 /* same */
+        frame_type = 14 /* same */
+        frame_type = 14 /* same */
+        frame_type = 14 /* same */
+        frame_type = 14 /* same */
+        frame_type = 11 /* same */
+        frame_type = 40 /* same */
+        frame_type = 5 /* same */
+        frame_type = 5 /* same */
+        frame_type = 5 /* same */
+        frame_type = 5 /* same */
+        frame_type = 5 /* same */
+        frame_type = 5 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 2
+          locals = [ class com/soranico/jmh/JmhSwitchAndIf, class org/openjdk/jmh/infra/Blackhole, class java/lang/String ]
+          stack = []
+    MethodParameters:
+      Name                           Flags
+      blackhole
+    RuntimeVisibleAnnotations:
+      0: #51()
+
+  public void ifTest(org.openjdk.jmh.infra.Blackhole);
+    descriptor: (Lorg/openjdk/jmh/infra/Blackhole;)V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=2
+         0: ldc           #13                 // String letter
+         2: getstatic     #11                 // Field kano:Ljava/lang/String;
+         5: invokevirtual #14                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+         8: ifeq          17
+        11: ldc           #13                 // String letter
+        13: astore_2
+        14: goto          105
+        17: ldc           #15                 // String song
+        19: getstatic     #11                 // Field kano:Ljava/lang/String;
+        22: invokevirtual #14                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        25: ifeq          34
+        28: ldc           #15                 // String song
+        30: astore_2
+        31: goto          105
+        34: ldc           #16                 // String hello
+        36: getstatic     #11                 // Field kano:Ljava/lang/String;
+        39: invokevirtual #14                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        42: ifeq          51
+        45: ldc           #16                 // String hello
+        47: astore_2
+        48: goto          105
+        51: ldc           #17                 // String how
+        53: getstatic     #11                 // Field kano:Ljava/lang/String;
+        56: invokevirtual #14                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        59: ifeq          68
+        62: ldc           #17                 // String how
+        64: astore_2
+        65: goto          105
+        68: ldc           #18                 // String are
+        70: getstatic     #11                 // Field kano:Ljava/lang/String;
+        73: invokevirtual #14                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        76: ifeq          85
+        79: ldc           #18                 // String are
+        81: astore_2
+        82: goto          105
+        85: ldc           #19                 // String you
+        87: getstatic     #11                 // Field kano:Ljava/lang/String;
+        90: invokevirtual #14                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        93: ifeq          102
+        96: ldc           #19                 // String you
+        98: astore_2
+        99: goto          105
+       102: ldc           #20                 // String kano
+       104: astore_2
+       105: aload_1
+       106: aload_2
+       107: invokevirtual #21                 // Method org/openjdk/jmh/infra/Blackhole.consume:(Ljava/lang/Object;)V
+       110: return
+      LineNumberTable:
+        line 86: 0
+        line 87: 11
+        line 88: 17
+        line 89: 28
+        line 90: 34
+        line 91: 45
+        line 92: 51
+        line 93: 62
+        line 94: 68
+        line 95: 79
+        line 96: 85
+        line 97: 96
+        line 99: 102
+        line 102: 105
+        line 103: 110
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           14       3     2 result   Ljava/lang/String;
+           31       3     2 result   Ljava/lang/String;
+           48       3     2 result   Ljava/lang/String;
+           65       3     2 result   Ljava/lang/String;
+           82       3     2 result   Ljava/lang/String;
+           99       3     2 result   Ljava/lang/String;
+            0     111     0  this   Lcom/soranico/jmh/JmhSwitchAndIf;
+            0     111     1 blackhole   Lorg/openjdk/jmh/infra/Blackhole;
+          105       6     2 result   Ljava/lang/String;
+      StackMapTable: number_of_entries = 7
+        frame_type = 17 /* same */
+        frame_type = 16 /* same */
+        frame_type = 16 /* same */
+        frame_type = 16 /* same */
+        frame_type = 16 /* same */
+        frame_type = 16 /* same */
+        frame_type = 252 /* append */
+          offset_delta = 2
+          locals = [ class java/lang/String ]
+    MethodParameters:
+      Name                           Flags
+      blackhole
+    RuntimeVisibleAnnotations:
+      0: #51()
+
+  static {};
+    descriptor: ()V
+    flags: ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: ldc           #20                 // String kano
+         2: putstatic     #11                 // Field kano:Ljava/lang/String;
+         5: return
+      LineNumberTable:
+        line 43: 0
+}
+SourceFile: "JmhSwitchAndIf.java"
+RuntimeVisibleAnnotations:
+  0: #56(#57=[e#58.#59])
+  1: #60(#57=e#61.#62)
+  2: #63(#64=I#65,#66=I#67,#68=e#61.#69)
+  3: #70(#64=I#71,#66=I#72,#68=e#61.#69)
+  4: #73(#57=I#67)
+  5: #74(#57=I#71)
+  6: #75(#57=e#76.#77)
