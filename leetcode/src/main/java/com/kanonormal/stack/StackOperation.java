@@ -3,6 +3,7 @@ package com.kanonormal.stack;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
 
 import java.util.*;
 
@@ -88,14 +89,96 @@ public class StackOperation {
         return nodesVal;
     }
 
-    public static void main(String[] args) throws Exception {
-
-        log.info("{}", postorderTraversal(createTree(new Integer[]{
-                1, 4, 2, 3, 5, 6, 8, 10
-        })));
 
 
+    /**
+     * 71
+     * 给你一个字符串 path ，表示指向某一文件或目录的Unix 风格 绝对路径 （以 '/' 开头），请你将其转化为更加简洁的规范路径。
+     * <p>
+     * 在 Unix 风格的文件系统中，一个点（.）表示当前目录本身；此外，两个点 （..）
+     * 表示将目录切换到上一级（指向父目录）；两者都可以是复杂相对路径的组成部分。
+     * 任意多个连续的斜杠（即，'//'）都被视为单个斜杠 '/' 。 对于此问题，任何其他格式的点（例如，'...'）均被视为文件/目录名称。
+     * <p>
+     * 请注意，返回的 规范路径 必须遵循下述格式：
+     * <p>
+     * 始终以斜杠 '/' 开头。
+     * 两个目录名之间必须只有一个斜杠 '/' 。
+     * 最后一个目录名（如果存在）不能 以 '/' 结尾。
+     * 此外，路径仅包含从根目录到目标文件或目录的路径上的目录（即，不含 '.' 或 '..'）。
+     * 返回简化后得到的 规范路径 。
+     * <p>
+     * 输入：path = "/home/"
+     * 输出："/home"
+     * 解释：注意，最后一个目录名后面没有斜杠。
+     * <p>
+     * 输入：path = "/a/./b/../../c/"
+     * 输出："/c"
+     *
+     * @param path
+     * @return
+     */
+    public static String simplifyPath(String path) {
+
+        Stack<Character> pathStack = new Stack<>();
+        char[] pathArray = path.toCharArray();
+        int max = pathArray.length;
+        pathStack.push('/');
+        for (int i = 1; i < pathArray.length; i++) {
+            if (pathArray[i] == '.' && i + 1 < max) {
+                if (pathArray[i + 1] == '/') {
+                    i += 1;
+                    continue;
+                } else if ((pathArray[i + 1] == '.' && i + 2 < max && pathArray[i + 2] == '/')
+                        || (pathArray[i + 1] == '.' && i + 2 >= max)) {
+                    if (pathStack.size() == 1) {
+                        continue;
+                    }
+                    pathStack.pop();
+                    while (pathStack.size() > 1 && pathStack.peek() != '/') {
+                        pathStack.pop();
+                    }
+                    i += 2;
+                    continue;
+                }
+            } else if (pathArray[i] == '.' && i + 1 >= max) {
+                continue;
+            }
+            while (i < max && pathArray[i] != '/') {
+                pathStack.push(pathArray[i]);
+                i++;
+            }
+            if (i >= max) {
+                break;
+            }
+            if (pathStack.size() > 0 && pathStack.peek() == '/') {
+                continue;
+            }
+            pathStack.push(pathArray[i]);
+        }
+        if (pathStack.isEmpty()) {
+            return null;
+        } else if (pathStack.peek() == '/' && pathStack.size() > 1) {
+            pathStack.pop();
+        }
+        StringBuilder sb = new StringBuilder(pathStack.size());
+        while (!pathStack.isEmpty()) {
+            sb.append(pathStack.pop());
+        }
+
+        return sb.reverse().toString();
     }
+
+    @Test
+    public void testSimplifyPath() {
+        log.info("path = {}", simplifyPath("/a/.../b../."));
+    }
+
+    @Test
+    public void testPostorderTraversal(){
+        log.info("post = {} ",postorderTraversal(createTree(new Integer[]{1,2,3,4,55,6,null,0})));
+    }
+
+
 
 
     @Data

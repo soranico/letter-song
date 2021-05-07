@@ -2,13 +2,13 @@ package com.kanonormal.bit;
 
 /**
  * <pre>
- * @title com.soranico.arithmetic.simple.BitOperation
+ * @title com.kanonormal.arithmetic.simple.BitOperation
  * @description
  *        <pre>
  *          位运算
  *        </pre>
  *
- * @author soranico
+ * @author kanonormal
  * @version 1.0
  * @date 2020/7/4
  *
