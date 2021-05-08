@@ -1,4 +1,4 @@
-package com.soranico.util.date;
+package com.kanonormal.util.date;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

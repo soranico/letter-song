@@ -1,4 +1,4 @@
-package com.soranico.thread.lock;
+package com.kanonormal.thread.lock;
 
 import lombok.extern.slf4j.Slf4j;
 

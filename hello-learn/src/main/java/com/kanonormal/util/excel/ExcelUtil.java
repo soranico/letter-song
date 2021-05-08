@@ -1,4 +1,4 @@
-package com.soranico.util.excel;
+package com.kanonormal.util.excel;
 
 
 import com.alibaba.excel.EasyExcel;

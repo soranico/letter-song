@@ -1,4 +1,4 @@
-package com.soranico.jmh;
+package com.kanonormal.jmh;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;

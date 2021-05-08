@@ -1,6 +1,6 @@
-package com.soranico.thread.lock;
+package com.kanonormal.thread.lock;
 
-import com.soranico.util.thread.ThreadNameFactory;
+import com.kanonormal.util.thread.ThreadNameFactory;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 

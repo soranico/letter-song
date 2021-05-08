@@ -1,4 +1,4 @@
-package com.soranico.thread.falsesharing;
+package com.kanonormal.thread.falsesharing;
 
 /**
  * <pre>
