@@ -1,4 +1,4 @@
-package com.kanonormal.bit;
+package com.kanonsd.bit;
 
 /**
  * <pre>

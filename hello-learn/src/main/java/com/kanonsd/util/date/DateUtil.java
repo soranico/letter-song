@@ -1,4 +1,4 @@
-package com.kanonormal.util.date;
+package com.kanonsd.util.date;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

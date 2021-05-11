@@ -1,4 +1,4 @@
-package com.kanonormal.stack;
+package com.kanonsd.stack;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -90,7 +90,6 @@ public class StackOperation {
     }
 
 
-
     /**
      * 71
      * 给你一个字符串 path ，表示指向某一文件或目录的Unix 风格 绝对路径 （以 '/' 开头），请你将其转化为更加简洁的规范路径。
@@ -171,60 +170,137 @@ public class StackOperation {
     /**
      * 150
      * 根据 逆波兰表示法，求表达式的值。
-     *
+     * <p>
      * 有效的算符包括 +、-、*、/ 。每个运算对象可以是整数，也可以是另一个逆波兰表达式。
-     *
+     * <p>
      * 说明：
-     *
+     * <p>
      * 整数除法只保留整数部分。
      * 给定逆波兰表达式总是有效的。换句话说，表达式总会得出有效数值且不存在除数为 0 的情况。
-     *
+     * <p>
      * 输入：tokens = ["10","6","9","3","+","-11","*","/","*","17","+","5","+"]
      * 输出：22
      * 解释：
      * 该算式转化为常见的中缀算术表达式为：
-     *   ((10 * (6 / ((9 + 3) * -11))) + 17) + 5
+     * ((10 * (6 / ((9 + 3) * -11))) + 17) + 5
      * = ((10 * (6 / (12 * -11))) + 17) + 5
      * = ((10 * (6 / -132)) + 17) + 5
      * = ((10 * 0) + 17) + 5
      * = (0 + 17) + 5
      * = 17 + 5
      * = 22
+     *
      * @param tokens
      * @return
      */
     public static int evalRPN(String[] tokens) {
-        Stack<String > evalStack = new Stack<>();
-        String add = "+",sub = "-" ,multi = "*",div="/";
+        Stack<String> evalStack = new Stack<>();
+        String add = "+", sub = "-", multi = "*", div = "/";
         for (int i = 0; i < tokens.length; i++) {
             String eval = tokens[i];
-            if (add.equals(eval)){
+            if (add.equals(eval)) {
                 Integer num1 = Integer.parseInt(evalStack.pop());
                 Integer num2 = Integer.parseInt(evalStack.pop());
-                evalStack.push(String.valueOf(num1+num2));
-            }else if (sub.equals(eval)){
+                evalStack.push(String.valueOf(num1 + num2));
+            } else if (sub.equals(eval)) {
                 Integer num1 = Integer.parseInt(evalStack.pop());
                 Integer num2 = Integer.parseInt(evalStack.pop());
-                evalStack.push(String.valueOf(num2-num1));
-            }else if (multi.equals(eval)){
+                evalStack.push(String.valueOf(num2 - num1));
+            } else if (multi.equals(eval)) {
                 Integer num1 = Integer.parseInt(evalStack.pop());
                 Integer num2 = Integer.parseInt(evalStack.pop());
-                evalStack.push(String.valueOf(num1*num2));
-            }else if (div.equals(eval)){
+                evalStack.push(String.valueOf(num1 * num2));
+            } else if (div.equals(eval)) {
                 Integer num1 = Integer.parseInt(evalStack.pop());
                 Integer num2 = Integer.parseInt(evalStack.pop());
-                evalStack.push(String.valueOf(num2/num1));
-            }else {
+                evalStack.push(String.valueOf(num2 / num1));
+            } else {
                 evalStack.push(eval);
             }
         }
         return Integer.parseInt(evalStack.pop());
     }
 
+
+    /**
+     * 227
+     * 给你一个字符串表达式 s ，请你实现一个基本计算器来计算并返回它的值。
+     * s 由整数和算符 ('+', '-', '*', '/') 组成，中间由一些空格隔开
+     * 整数除法仅保留整数部分。
+     *
+     * @param s
+     * @return
+     */
+    public static int calculate(String s) {
+        Stack<String> calculateStack = new Stack<>();
+        char[] calDataArray = s.toCharArray();
+        StringBuilder calSb = new StringBuilder();
+        int max = calDataArray.length;
+        for (int i = 0; i < max; i++) {
+            while (i < max && ' ' == calDataArray[i]) {
+                i++;
+            }
+            char cal = calDataArray[i];
+            // 纯数字
+            while (i < max && cal >= '0' && cal <= '9') {
+                calSb.append(cal);
+                cal = calDataArray[++i];
+            }
+            // eg. 5 + 3 +  eg. 5 +
+            // 需要下一个计算符
+            if (cal == '+' || cal == '-') {
+
+                if (calculateStack.size()>0 && calculateStack.peek().length() == 1) {
+                    String numOrOp = calculateStack.peek();
+                    if ("+".equals(numOrOp)) {
+                        calculateStack.pop();
+                        calculateStack.push(String.valueOf(Integer.parseInt(calculateStack.pop())
+                                + Integer.parseInt(calSb.toString())));
+                    } else if ("-".equals(numOrOp)) {
+                        calculateStack.pop();
+                        calculateStack.push(String.valueOf(Integer.parseInt(calculateStack.pop())
+                                - Integer.parseInt(calSb.toString())));
+                    }
+                }else {
+                    calculateStack.push(calSb.toString());
+                }
+                calculateStack.push(String.valueOf(cal));
+                calSb.setLength(0);
+            } else if ('/'==cal){
+                int num1 = Integer.parseInt(calSb.toString());
+                calSb.setLength(0);
+                while (i < max && calDataArray[++i] >= '0' && calDataArray[i] <= '9') {
+                    calSb.append(calDataArray[i]);
+                }
+                int num2 = Integer.parseInt(calSb.toString());
+                calculateStack.push(String.valueOf(num1/num2));
+                calSb.setLength(0);
+                if (i<max){
+                    calculateStack.push(String.valueOf(calDataArray[i]));
+                }
+            }else if ('*'==cal){
+                calculateStack.push(String.valueOf( Integer.parseInt(calculateStack.pop())
+                        * Integer.parseInt(calSb.toString())));
+                calSb.setLength(0);
+            }
+
+
+        }
+
+        return -1;
+    }
+
     @Test
-    public void testEvalRPN(){
-        log.info("eval = {}",evalRPN(new String[]{
-                "4","13","5","/","+"
+    public void testCalculate() {
+        // 输入：s = " 3+ 4+5 / 2 "
+        // 输出：5
+        log.info("calculate = {}", calculate("3+5 / 2"));
+    }
+
+    @Test
+    public void testEvalRPN() {
+        log.info("eval = {}", evalRPN(new String[]{
+                "4", "13", "5", "/", "+"
         }));
 
     }
@@ -235,11 +311,9 @@ public class StackOperation {
     }
 
     @Test
-    public void testPostorderTraversal(){
-        log.info("post = {} ",postorderTraversal(createTree(new Integer[]{1,2,3,4,55,6,null,0})));
+    public void testPostorderTraversal() {
+        log.info("post = {} ", postorderTraversal(createTree(new Integer[]{1, 2, 3, 4, 55, 6, null, 0})));
     }
-
-
 
 
     @Data

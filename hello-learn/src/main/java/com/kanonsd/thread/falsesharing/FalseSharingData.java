@@ -1,4 +1,4 @@
-package com.kanonormal.thread.falsesharing;
+package com.kanonsd.thread.falsesharing;
 
 /**
  * <pre>

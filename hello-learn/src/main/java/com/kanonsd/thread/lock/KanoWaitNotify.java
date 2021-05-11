@@ -1,6 +1,6 @@
-package com.kanonormal.thread.lock;
+package com.kanonsd.thread.lock;
 
-import com.kanonormal.util.thread.ThreadNameFactory;
+import com.kanonsd.util.thread.ThreadNameFactory;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 

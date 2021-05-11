@@ -1,4 +1,4 @@
-package com.kanonormal.thread.falsesharing;
+package com.kanonsd.thread.falsesharing;
 
 import lombok.extern.slf4j.Slf4j;
 

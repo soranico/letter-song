@@ -1,4 +1,4 @@
-package com.kanonormal.concurrent;
+package com.kanonsd.concurrent;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -1,4 +1,4 @@
-package com.kanonormal.disruptor.simple;
+package com.kanonsd.disruptor.simple;
 
 import com.lmax.disruptor.EventFactory;
 
