@@ -232,63 +232,12 @@ public class StackOperation {
      * @return
      */
     public static int calculate(String s) {
-        Stack<String> calculateStack = new Stack<>();
-        char[] calDataArray = s.toCharArray();
-        StringBuilder calSb = new StringBuilder();
-        int max = calDataArray.length;
-        for (int i = 0; i < max; i++) {
-            while (i < max && ' ' == calDataArray[i]) {
-                i++;
-            }
-            char cal = calDataArray[i];
-            // 纯数字
-            while (i < max && cal >= '0' && cal <= '9') {
-                calSb.append(cal);
-                cal = calDataArray[++i];
-            }
-            // eg. 5 + 3 +  eg. 5 +
-            // 需要下一个计算符
-            if (cal == '+' || cal == '-') {
-
-                if (calculateStack.size()>0 && calculateStack.peek().length() == 1) {
-                    String numOrOp = calculateStack.peek();
-                    if ("+".equals(numOrOp)) {
-                        calculateStack.pop();
-                        calculateStack.push(String.valueOf(Integer.parseInt(calculateStack.pop())
-                                + Integer.parseInt(calSb.toString())));
-                    } else if ("-".equals(numOrOp)) {
-                        calculateStack.pop();
-                        calculateStack.push(String.valueOf(Integer.parseInt(calculateStack.pop())
-                                - Integer.parseInt(calSb.toString())));
-                    }
-                }else {
-                    calculateStack.push(calSb.toString());
-                }
-                calculateStack.push(String.valueOf(cal));
-                calSb.setLength(0);
-            } else if ('/'==cal){
-                int num1 = Integer.parseInt(calSb.toString());
-                calSb.setLength(0);
-                while (i < max && calDataArray[++i] >= '0' && calDataArray[i] <= '9') {
-                    calSb.append(calDataArray[i]);
-                }
-                int num2 = Integer.parseInt(calSb.toString());
-                calculateStack.push(String.valueOf(num1/num2));
-                calSb.setLength(0);
-                if (i<max){
-                    calculateStack.push(String.valueOf(calDataArray[i]));
-                }
-            }else if ('*'==cal){
-                calculateStack.push(String.valueOf( Integer.parseInt(calculateStack.pop())
-                        * Integer.parseInt(calSb.toString())));
-                calSb.setLength(0);
-            }
-
-
-        }
 
         return -1;
     }
+
+
+
 
     @Test
     public void testCalculate() {

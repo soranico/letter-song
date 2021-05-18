@@ -65,6 +65,7 @@ public class CompileOptimize {
         TimeUnit.SECONDS.sleep(6);
         stop = true;
         t.join();
+        System.out.println(0);
     }
 
 
