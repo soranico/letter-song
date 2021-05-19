@@ -223,15 +223,15 @@ public class StackOperation {
 
 
     /**
-     * 227
-     * 给你一个字符串表达式 s ，请你实现一个基本计算器来计算并返回它的值。
-     * s 由整数和算符 ('+', '-', '*', '/') 组成，中间由一些空格隔开
-     * 整数除法仅保留整数部分。
-     *
-     * @param s
-     * @return
+     * 给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，
+     * 计算按此排列的柱子，下雨之后能接多少雨水。
      */
-    public static int calculate(String s) {
+    public int trap(int[] height) {
+        int w = 1;
+        /**
+         * 1.找到第一个不为0的数
+         * 2.
+         */
 
         return -1;
     }
@@ -239,12 +239,7 @@ public class StackOperation {
 
 
 
-    @Test
-    public void testCalculate() {
-        // 输入：s = " 3+ 4+5 / 2 "
-        // 输出：5
-        log.info("calculate = {}", calculate("3+5 / 2"));
-    }
+
 
     @Test
     public void testEvalRPN() {
