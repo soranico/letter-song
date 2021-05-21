@@ -223,21 +223,91 @@ public class StackOperation {
 
 
     /**
-     * 给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，
-     * 计算按此排列的柱子，下雨之后能接多少雨水。
+     * 给你一个字符串表达式 s ，请你实现一个基本计算器来计算并返回它的值。
+     *
+     * 整数除法仅保留整数部分。
+     *
+     * 输入：s = " 3+5 / 2 "
+     * 输出：5
+     * 0x2B
+     * 0x2D
+     * 0x2A
+     * 0x2F
+     * @param s
+     * @return
      */
-    public int trap(int[] height) {
-        int w = 1;
-        /**
-         * 1.找到第一个不为0的数
-         * 2.
-         */
+    public int calculate(String s) {
+        Stack<Character> opStack = new Stack<>();
+        Stack<Integer> numStack = new Stack<>();
+        char[] calArray = s.toCharArray();
+        for (int i = 0; i < calArray.length; i++) {
+            char cal = calArray[i];
+            if (cal == ' '){
+                continue;
+            }
+            if (cal>=0x30 && cal<=0x39){
+                int[] cals = nextNum(calArray, i);
+                numStack.push(cals[1]);
+                i=cals[0];
+            }else if (cal == 0x2A || cal == 0x2F){
+                int num1 = numStack.pop();
+                int[] nextNum = nextNum(calArray, i + 1);
+                int num2 = nextNum[1];
+                i = nextNum[0];
+                numStack.push(cal(num1,num2,cal));
+            }
+            // 如果栈中没有操作符那么操作符直接入栈,如果占中已经存在操作符,那么弹出两个操作数和操作符计算入栈
+            else if (opStack.isEmpty()){
+                opStack.push(cal);
+            }else {
+                int num2 = numStack.pop();
+                int num1 = numStack.pop();
+                numStack.push(cal(num1,num2,opStack.pop()));
+                opStack.push(cal);
+            }
+        }
+        if (!opStack.isEmpty()){
+            int num2 = numStack.pop();
+            int num1 = numStack.pop();
+            return cal(num1,num2,opStack.pop());
+        }
+        return numStack.pop();
 
-        return -1;
+    }
+
+    private int[] nextNum(char[] calArray,int start){
+        StringBuilder numBuilder = new StringBuilder();
+        while (calArray[start]==' '){
+            start++;
+        }
+        while (start<calArray.length
+                && calArray[start]>=0x30 && calArray[start]<=0x39){
+            numBuilder.append(calArray[start++]);
+        }
+        return new int[]{start-1,Integer.parseInt(numBuilder.toString())};
+    }
+
+    private int cal(int num1,int num2,char op){
+        int result;
+        if (op == '+') {
+            result = num1 + num2;
+        } else if (op == '-'){
+            result =  num1 - num2;
+        }else if (op == '*'){
+            result =num1 * num2;
+        }else {
+            result =  num1 / num2;
+        }
+        return result;
     }
 
 
 
+
+    @Test
+    public void testCalculate(){
+        log.info("calculate = {}",calculate(" 3+5 / 2 "));
+    }
 
 
 

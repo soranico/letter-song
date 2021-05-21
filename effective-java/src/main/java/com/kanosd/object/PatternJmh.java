@@ -24,6 +24,12 @@ import java.util.regex.Pattern;
 @State(Scope.Thread)
 public class PatternJmh {
 
+    /**
+     *
+     * Double和Float使用compareTo
+     * 因为存在NaN这些常亮
+     *
+     */
 
     public static final String patternStr = "^(?=.)M*(C[MD]D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$";
 
