@@ -302,6 +302,81 @@ public class StackOperation {
     }
 
 
+    /**
+     * 请你仅使用两个队列实现一个后入先出（LIFO）的栈，并支持普通队列的全部四种操作（push、top、pop 和 empty）。
+     *
+     * 实现 MyStack 类：
+     *
+     * void push(int x) 将元素 x 压入栈顶。
+     * int pop() 移除并返回栈顶元素。
+     * int top() 返回栈顶元素。
+     * boolean empty() 如果栈是空的，返回 true ；否则，返回 false 。
+     *
+     * 注意：
+     *
+     * 你只能使用队列的基本操作 ——
+     * 也就是push to back、peek/pop from front、size 和is empty这些操作。
+     *
+     */
+    private static class MyStack {
+        private  ArrayDeque<Integer> first;
+        private  ArrayDeque<Integer> second;
+        /** Initialize your data structure here. */
+        public MyStack() {
+            this.first = new ArrayDeque<>();
+            this.second = new ArrayDeque<>();
+        }
+
+        /** Push element x onto stack. */
+        public void push(int x) {
+            if (first.isEmpty()){
+                first.push(x);
+                return;
+            }
+            /**
+             *
+             * 当前有元素 1 则1 出队后 2入队 然后1入队
+             * 当前有元素 2 1 则 需要 2 1出队 后 3入队 然后按照 2 1入队
+             * 将 2 1看为一个整体的话,即每次将所有元素依次出队，然后新元素
+             * 入队，再整体入队
+             *
+             */
+            while (!first.isEmpty()){
+                second.add(first.pop());
+            }
+            // 新元素入队
+            first.push(x);
+            while (!second.isEmpty()){
+                first.add(second.pop());
+            }
+
+        }
+
+        /** Removes the element on top of the stack and returns that element. */
+        public int pop() {
+            return first.pop();
+        }
+
+        /** Get the top element. */
+        public int top() {
+            return first.peek();
+        }
+
+        /** Returns whether the stack is empty. */
+        public boolean empty() {
+            return first.isEmpty();
+        }
+    }
+
+    @Test
+    public void testMyStack(){
+        MyStack myStack = new MyStack();
+        myStack.push(1);
+        myStack.push(2);
+        myStack.push(3);
+        myStack.push(4);
+    }
+
 
 
     @Test

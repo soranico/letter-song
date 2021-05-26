@@ -1,0 +1,573 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hotspot_log version='160 1' process='11244' time_ms='1621997906857'>
+<vm_version>
+<name>
+Java HotSpot(TM) 64-Bit Server VM
+</name>
+<release>
+25.281-b09
+</release>
+<info>
+Java HotSpot(TM) 64-Bit Server VM (25.281-b09) for bsd-amd64 JRE (1.8.0_281-b09), built on Dec  9 2020 12:44:49 by &quot;java_re&quot; with gcc 4.2.1 Compatible Apple LLVM 10.0.0 (clang-1000.11.45.5)
+</info>
+</vm_version>
+<vm_arguments>
+<args>
+-XX:+PrintSafepointStatistics -XX:PrintSafepointStatisticsCount=1 -XX:+UnlockDiagnosticVMOptions -XX:-DisplayVMOutput -XX:+LogVMOutput -Xss256k -Xmx30m -Xms30m -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=59090:/Applications/IntelliJ IDEA.app/Contents/bin -Dfile.encoding=UTF-8 
+</args>
+<command>
+com.kanonsd.jvm.SafePoint
+</command>
+<launcher>
+SUN_STANDARD
+</launcher>
+<properties>
+java.vm.specification.name=Java Virtual Machine Specification
+java.vm.version=25.281-b09
+java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+java.vm.info=mixed mode, sharing
+java.ext.dirs=/Users/kano/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java
+java.endorsed.dirs=/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/endorsed
+sun.boot.library.path=/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib
+java.library.path=/Users/kano/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+java.home=/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre
+java.class.path=/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/deploy.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/ext/jaccess.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/javaws.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/jfxswt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/plugin.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/lib/ant-javafx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/lib/dt.jar
+sun.boot.class.path=/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home/jre/classes
+java.vm.specification.vendor=Oracle Corporation
+java.vm.specification.version=1.8
+java.vm.vendor=Oracle Corporation
+file.encoding=UTF-8
+sun.java.command=com.kanonsd.jvm.SafePoint
+sun.java.launcher=SUN_STANDARD
+</properties>
+</vm_arguments>
+<tty>
+<blob name='MethodHandlesAdapterBlob' size='32000'>
+<sect index='1' size='32000' free='31628'/>
+</blob>
+<writer thread='11011'/>
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+0.289: ParallelGCFailedAllocation       [       9          0              0    ]      [     0     0     0     0     5    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+0.298: ParallelGCFailedAllocation       [       9          0              0    ]      [     0     0     0     0     9    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+0.311: ParallelGCFailedAllocation       [       9          0              0    ]      [     0     0     0     0   279    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+0.592: ParallelGCFailedAllocation       [       9          0              0    ]      [     0     0     0     0   158    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+0.753: ParallelGCFailedAllocation       [       9          0              0    ]      [     0     0     0     0   353    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+1.115: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0    80    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+1.201: ParallelGCFailedAllocation       [      10          0              1    ]      [     0     0     0     0   186    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+1.393: ParallelGCFailedAllocation       [      10          0              1    ]      [     0     0     0     0   296    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+1.696: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0    56    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+1.756: ParallelGCFailedAllocation       [      10          0              1    ]      [     0     0     0     0   182    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+1.942: ParallelGCFailedAllocation       [      10          0              1    ]      [     0     0     0     0   309    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+2.254: ParallelGCFailedAllocation       [      10          0              1    ]      [     0     0     0     0    56    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+2.313: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   190    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+2.505: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   128    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+2.635: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   136    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+2.772: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   118    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+2.890: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   110    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+3.001: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   112    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+3.113: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   110    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+3.223: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   108    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+3.332: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   110    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+3.442: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   111    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+3.553: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   109    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+3.663: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   112    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+3.775: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   107    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+3.883: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   115    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+3.999: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   114    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+4.113: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   118    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+4.233: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   115    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+4.349: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   113    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+4.462: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   124    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+4.587: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   111    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+4.699: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   120    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+4.819: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   120    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+4.939: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   113    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+5.053: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   109    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+5.162: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   111    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+5.273: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   112    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+5.386: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   110    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+5.496: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   127    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+5.624: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   125    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+5.749: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   109    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+5.859: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   109    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+5.968: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   111    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+6.080: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   120    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+6.201: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   143    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+6.344: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   121    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+6.466: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   144    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+6.611: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   121    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+6.733: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   154    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+6.888: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   140    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+7.028: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   115    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+7.144: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   217    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+7.361: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   149    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+7.511: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   129    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+7.640: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   149    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+7.790: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   113    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+7.903: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   149    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+8.053: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   132    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+8.185: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   125    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+8.311: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   129    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+8.440: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   119    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+8.560: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   117    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+8.677: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   151    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+8.829: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   129    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+8.958: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   133    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+9.092: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   143    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+9.236: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   114    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+9.350: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   121    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+9.472: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   115    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+9.588: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   112    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+9.701: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   120    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+9.822: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   109    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+9.931: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   117    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+10.049: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   121    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+10.171: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   109    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+10.281: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   123    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+10.405: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   112    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+10.518: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   113    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+10.632: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   115    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+10.747: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   114    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+10.862: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   110    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+10.972: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   108    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+11.081: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   107    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+11.189: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   124    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+11.314: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   117    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+11.431: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   130    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+11.562: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   114    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+11.677: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   116    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+11.793: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   117    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+11.910: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   111    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+12.022: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   118    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+12.141: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   112    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+12.253: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   115    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+12.368: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   114    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+12.483: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   112    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+12.596: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   120    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+12.717: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   138    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+12.856: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   155    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+13.012: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   123    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+13.136: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   306    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+13.443: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   143    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+13.586: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   238    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+13.824: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   148    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+13.973: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   124    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+14.098: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   136    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+14.234: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   120    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+14.356: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   128    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+14.484: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   118    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+14.603: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   117    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+14.721: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   130    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+14.851: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   112    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+14.964: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   112    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+15.076: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   141    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+15.218: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   120    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+15.338: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   120    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+15.459: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   135    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+15.595: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   144    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+15.740: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   141    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+15.882: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   160    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+16.043: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   134    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+16.178: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   119    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+16.298: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   121    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+16.420: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   143    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+16.563: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   124    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+16.687: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   129    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+16.817: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   203    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+17.021: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   134    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+17.155: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   139    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+17.295: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   139    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+17.434: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   153    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+17.588: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   124    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+17.713: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   150    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+17.863: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   146    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+18.010: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   130    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+18.141: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   151    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+18.293: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   147    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+18.440: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   140    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+18.581: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   135    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+18.716: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   127    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+18.844: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   127    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+18.971: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   131    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+19.103: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   121    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+19.225: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   124    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+19.349: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   144    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+19.493: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   346    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+19.840: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   193    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+20.033: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   225    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+20.259: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   195    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+20.455: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   194    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+20.650: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   166    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+20.816: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   373    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+21.189: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   273    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+21.462: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   223    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+21.686: ParallelGCFailedAllocation       [      10          0              1    ]      [     0     0     0     0   318    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+22.005: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   365    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+22.371: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   255    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+22.626: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   156    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+22.783: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   145    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+22.929: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   540    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+23.469: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   223    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+23.694: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   276    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+23.970: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   255    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+24.225: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   300    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+24.526: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   186    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+24.713: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   380    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+25.094: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   259    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+25.354: ParallelGCFailedAllocation       [      10          0              1    ]      [     0     0     0     0   258    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+25.613: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   258    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+25.872: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   622    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+26.494: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   182    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+26.676: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   311    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+26.988: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   224    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+27.212: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   301    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+27.514: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   343    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+27.858: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   264    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+28.123: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   119    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+28.242: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   130    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+28.373: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   138    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+28.511: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   120    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+28.632: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   131    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+28.763: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   122    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+28.886: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   126    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+29.012: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   155    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+29.168: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   127    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+29.296: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   124    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+29.420: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   111    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+29.531: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   126    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+29.658: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   122    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+29.780: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   228    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+30.009: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   149    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+30.160: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   147    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+30.308: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   150    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+30.458: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   115    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+30.574: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   122    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+30.696: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   136    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+30.833: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   123    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+30.957: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   137    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+31.094: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   116    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+31.211: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   121    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+31.333: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   130    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+31.464: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   134    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+31.598: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   119    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+31.718: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   122    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+31.840: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   122    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+31.963: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   141    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+32.105: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   118    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+32.224: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   116    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+32.341: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   125    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+32.467: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   118    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+32.585: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   126    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+32.712: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   116    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+32.828: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   128    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+32.957: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   113    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+33.070: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   122    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+33.192: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   130    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+33.323: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   130    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+33.453: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   147    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+33.601: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   125    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+33.726: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   127    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+33.854: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   143    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+33.998: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   140    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+34.139: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   124    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+34.264: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   192    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+34.457: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   187    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+34.644: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   145    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+34.790: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   135    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+34.926: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   122    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+35.049: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   114    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+35.163: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   112    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+35.275: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   154    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+35.430: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   191    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+35.622: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   115    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+35.737: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   109    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+35.847: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   155    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+36.002: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   122    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+36.125: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   115    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+36.241: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   139    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+36.381: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   297    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+36.679: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   148    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+36.827: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   126    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+36.953: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   110    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+37.064: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   117    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+37.181: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   114    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+37.295: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   134    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+37.430: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   124    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+37.555: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   121    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+37.677: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   136    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+37.813: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   122    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+37.936: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   130    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+38.067: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   124    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+38.191: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   124    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+38.316: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   118    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+38.435: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   115    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+38.550: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0   238    ]  0   
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+38.790: ParallelGCFailedAllocation       [      10          0              0    ]      [     0     0     0     0     7    ]  0   
+<destroy_vm stamp='38.798'/>
+         vmop                    [threads: total initially_running wait_to_block]    [time: spin block sync cleanup vmop] page_trap_count
+38.798: no vm operation                  [       9          0              0    ]      [     0     0     0     0   368    ]  0   
+
+Polling page always armed
+ParallelGCFailedAllocation       256
+    1 VM operations coalesced during safepoint
+Maximum sync time      0 ms
+Maximum vm operation time (except for Exit VM operation)    622 ms
+<tty_done stamp='39.166'/>
+</tty>
+<hotspot_log_done stamp='39.166'/>
+</hotspot_log>
