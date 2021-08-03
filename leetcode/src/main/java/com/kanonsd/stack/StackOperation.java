@@ -224,15 +224,16 @@ public class StackOperation {
 
     /**
      * 给你一个字符串表达式 s ，请你实现一个基本计算器来计算并返回它的值。
-     *
+     * <p>
      * 整数除法仅保留整数部分。
-     *
+     * <p>
      * 输入：s = " 3+5 / 2 "
      * 输出：5
      * 0x2B
      * 0x2D
      * 0x2A
      * 0x2F
+     *
      * @param s
      * @return
      */
@@ -242,61 +243,61 @@ public class StackOperation {
         char[] calArray = s.toCharArray();
         for (int i = 0; i < calArray.length; i++) {
             char cal = calArray[i];
-            if (cal == ' '){
+            if (cal == ' ') {
                 continue;
             }
-            if (cal>=0x30 && cal<=0x39){
+            if (cal >= 0x30 && cal <= 0x39) {
                 int[] cals = nextNum(calArray, i);
                 numStack.push(cals[1]);
-                i=cals[0];
-            }else if (cal == 0x2A || cal == 0x2F){
+                i = cals[0];
+            } else if (cal == 0x2A || cal == 0x2F) {
                 int num1 = numStack.pop();
                 int[] nextNum = nextNum(calArray, i + 1);
                 int num2 = nextNum[1];
                 i = nextNum[0];
-                numStack.push(cal(num1,num2,cal));
+                numStack.push(cal(num1, num2, cal));
             }
             // 如果栈中没有操作符那么操作符直接入栈,如果占中已经存在操作符,那么弹出两个操作数和操作符计算入栈
-            else if (opStack.isEmpty()){
+            else if (opStack.isEmpty()) {
                 opStack.push(cal);
-            }else {
+            } else {
                 int num2 = numStack.pop();
                 int num1 = numStack.pop();
-                numStack.push(cal(num1,num2,opStack.pop()));
+                numStack.push(cal(num1, num2, opStack.pop()));
                 opStack.push(cal);
             }
         }
-        if (!opStack.isEmpty()){
+        if (!opStack.isEmpty()) {
             int num2 = numStack.pop();
             int num1 = numStack.pop();
-            return cal(num1,num2,opStack.pop());
+            return cal(num1, num2, opStack.pop());
         }
         return numStack.pop();
 
     }
 
-    private int[] nextNum(char[] calArray,int start){
+    private int[] nextNum(char[] calArray, int start) {
         StringBuilder numBuilder = new StringBuilder();
-        while (calArray[start]==' '){
+        while (calArray[start] == ' ') {
             start++;
         }
-        while (start<calArray.length
-                && calArray[start]>=0x30 && calArray[start]<=0x39){
+        while (start < calArray.length
+                && calArray[start] >= 0x30 && calArray[start] <= 0x39) {
             numBuilder.append(calArray[start++]);
         }
-        return new int[]{start-1,Integer.parseInt(numBuilder.toString())};
+        return new int[]{start - 1, Integer.parseInt(numBuilder.toString())};
     }
 
-    private int cal(int num1,int num2,char op){
+    private int cal(int num1, int num2, char op) {
         int result;
         if (op == '+') {
             result = num1 + num2;
-        } else if (op == '-'){
-            result =  num1 - num2;
-        }else if (op == '*'){
-            result =num1 * num2;
-        }else {
-            result =  num1 / num2;
+        } else if (op == '-') {
+            result = num1 - num2;
+        } else if (op == '*') {
+            result = num1 * num2;
+        } else {
+            result = num1 / num2;
         }
         return result;
     }
@@ -304,32 +305,36 @@ public class StackOperation {
 
     /**
      * 请你仅使用两个队列实现一个后入先出（LIFO）的栈，并支持普通队列的全部四种操作（push、top、pop 和 empty）。
-     *
+     * <p>
      * 实现 MyStack 类：
-     *
+     * <p>
      * void push(int x) 将元素 x 压入栈顶。
      * int pop() 移除并返回栈顶元素。
      * int top() 返回栈顶元素。
      * boolean empty() 如果栈是空的，返回 true ；否则，返回 false 。
-     *
+     * <p>
      * 注意：
-     *
+     * <p>
      * 你只能使用队列的基本操作 ——
      * 也就是push to back、peek/pop from front、size 和is empty这些操作。
-     *
      */
     private static class MyStack {
-        private  ArrayDeque<Integer> first;
-        private  ArrayDeque<Integer> second;
-        /** Initialize your data structure here. */
+        private ArrayDeque<Integer> first;
+        private ArrayDeque<Integer> second;
+
+        /**
+         * Initialize your data structure here.
+         */
         public MyStack() {
             this.first = new ArrayDeque<>();
             this.second = new ArrayDeque<>();
         }
 
-        /** Push element x onto stack. */
+        /**
+         * Push element x onto stack.
+         */
         public void push(int x) {
-            if (first.isEmpty()){
+            if (first.isEmpty()) {
                 first.push(x);
                 return;
             }
@@ -341,35 +346,41 @@ public class StackOperation {
              * 入队，再整体入队
              *
              */
-            while (!first.isEmpty()){
+            while (!first.isEmpty()) {
                 second.add(first.pop());
             }
             // 新元素入队
             first.push(x);
-            while (!second.isEmpty()){
+            while (!second.isEmpty()) {
                 first.add(second.pop());
             }
 
         }
 
-        /** Removes the element on top of the stack and returns that element. */
+        /**
+         * Removes the element on top of the stack and returns that element.
+         */
         public int pop() {
             return first.pop();
         }
 
-        /** Get the top element. */
+        /**
+         * Get the top element.
+         */
         public int top() {
             return first.peek();
         }
 
-        /** Returns whether the stack is empty. */
+        /**
+         * Returns whether the stack is empty.
+         */
         public boolean empty() {
             return first.isEmpty();
         }
     }
 
     @Test
-    public void testMyStack(){
+    public void testMyStack() {
         MyStack myStack = new MyStack();
         myStack.push(1);
         myStack.push(2);
@@ -378,12 +389,178 @@ public class StackOperation {
     }
 
 
+    /**
+     * 给你一个字符串表达式 s ，请你实现一个基本计算器来计算并返回它的值
+     * <p>
+     * 1 <= s.length <= 3 * 105
+     * s 由数字、'+'、'-'、'('、')'、和 ' ' 组成
+     * s 表示一个有效的表达式
+     * <p>
+     * 输入：s = "(1+(4+5+2)-3)+(6+8)"
+     * 输出：23
+     */
+    public int calculateHard(String s) {
+        char[] calArray = s.toCharArray();
+        ArrayDeque<Integer> calNumStack = new ArrayDeque<>();
+        ArrayDeque<Character> calOpStack = new ArrayDeque<>();
 
-    @Test
-    public void testCalculate(){
-        log.info("calculate = {}",calculate(" 3+5 / 2 "));
+        /**
+         * 遇到 ( 数字依次入栈 ，操作符依次入入栈
+         * 如果操作符为 - 则将操作数转为负数，然后入栈 +
+         *
+         * 5-3 = -3+5
+         *
+         * +5 + -5
+         *
+         */
+        boolean transformNum = false;
+        // 计算符个数
+        int opNum = 0;
+        for (int i = 0; i < calArray.length; i++) {
+            char cal = calArray[i];
+            if (cal == ' ') {
+                continue;
+            }
+            // 数字入栈
+            if (cal >= 0x30 && cal <= 0x39) {
+                int[] nums = nextNum(calArray, i);
+                if (transformNum) {
+                    nums[1] = -nums[1];
+                    transformNum = false;
+                }
+                calNumStack.push(nums[1]);
+                i = nums[0];
+                continue;
+            }
+            // 下个非空字符
+            int start = i;
+            while (start+1 < calArray.length && calArray[start+1] == ' '){
+                start++;
+            }
+            if (start+1 < calArray.length){
+                char nextOp = calArray[start+1];
+                // ++ +- 忽略当前操作符即可 -+ -- 修改下个操作符
+                if (cal=='+' && (nextOp=='+'||nextOp=='-')){
+                    i = start;
+                    continue;
+                }
+                if (cal == '-' && (nextOp=='-' || nextOp=='+')){
+                    calArray[start+1]=nextOp=='+'?'-':'+';
+                    continue;
+                }
+            }
+            if (cal == '-') {
+                transformNum = true;
+                cal = '+';
+            }
+            if (cal != ')') {
+                if (calNumStack.size()!= opNum+1 && cal=='+'){
+                    calNumStack.push(0);
+                }
+                if (cal=='+'){
+                    opNum++;
+                }
+                calOpStack.push(cal);
+                continue;
+            }
+            // 计算 0+3 0+8+3+4+4 n+1
+            opNum-=calHard(calOpStack,calNumStack);
+
+        }
+        calHard(calOpStack,calNumStack);
+        return calNumStack.pop();
     }
 
+    private int calHard(ArrayDeque<Character> calOpStack,ArrayDeque<Integer> calNumStack){
+        int loop = 0;
+        while (!calOpStack.isEmpty() && calOpStack.peek() != '(') {
+            loop++;
+            calOpStack.pop();
+        }
+        if (!calOpStack.isEmpty()){
+            calOpStack.pop();
+        }
+        int opNUm=loop;
+        while (loop > 0) {
+            int num1 = calNumStack.pop();
+            int num2 = calNumStack.pop();
+            calNumStack.push(num1 + num2);
+            loop--;
+        }
+        return opNUm;
+    }
+
+
+    /**
+     * 402
+     * 给定一个以字符串表示的非负整数num，移除这个数中的 k 位数字，使得剩下的数字最小。
+     *
+     * 注意:
+     *
+     * num 的长度小于 10002 且≥ k。
+     * num 不会包含任何前导零。
+     *
+     * 输入: num = "10", k = 2
+     * 输出: "0"
+     * 解释: 从原数字移除所有的数字，剩余为空就是0。
+     *
+     * 输入: num = "10200", k = 1
+     * 输出: "200"
+     * 解释: 移掉首位的 1 剩下的数字为 200. 注意输出不能有任何前导零。
+     *
+     * 输入: num = "1432219", k = 3
+     * 输出: "1219"
+     * 解释: 移除掉三个数字 4, 3, 和 2 形成一个新的最小的数字 1219。
+     * @param num
+     * @param k
+     * @return
+     */
+    public String removeKdigits(String num, int k) {
+
+        return null;
+    }
+
+    /**
+     * 503
+     * 给定一个循环数组（最后一个元素的下一个元素是数组的第一个元素），输出每个元素的下一个更大元素。数字 x 的下一个更大的元素是按数组遍历顺序，这个数字之后的第一个比它更大的数，这意味着你应该循环地搜索它的下一个更大的数。如果不存在，则输出 -1。
+     *
+     * 示例 1:
+     *
+     * 输入: [1,2,1]
+     * 输出: [2,-1,2]
+     * 解释: 第一个 1 的下一个更大的数是 2；
+     * 数字 2 找不到下一个更大的数；
+     * 第二个 1 的下一个最大的数需要循环搜索，结果也是 2。
+     * @param nums
+     * @return
+     */
+    public int[] nextGreaterElements(int[] nums) {
+        int[] nextEle = new int[nums.length];
+        int[] sort = nums.clone();
+        Arrays.sort(sort);
+        for (int i = 0; i < nums.length; i++) {
+
+        }
+
+
+        return null;
+    }
+
+    @Test
+    public void testRemoveKdigits(){
+        log.info("removeKdigits = {}",removeKdigits("10200",2));
+    }
+
+    @Test
+    public void testCalculateHard() {
+        // "- (3 + (4 + 5))"
+        log.info("calculateHard = {}", calculateHard("- (3 + (4 + 5))"));
+    }
+
+    @Test
+    public void testCalculate() {
+        log.info("calculate = {}", calculate(" 3+5 / 2 "));
+    }
 
 
     @Test
@@ -394,6 +571,12 @@ public class StackOperation {
 
     }
 
+
+
+
+
+
+
     @Test
     public void testSimplifyPath() {
         log.info("path = {}", simplifyPath("/a/.../b../."));
@@ -403,6 +586,50 @@ public class StackOperation {
     public void testPostorderTraversal() {
         log.info("post = {} ", postorderTraversal(createTree(new Integer[]{1, 2, 3, 4, 55, 6, null, 0})));
     }
+
+
+    private static class MinStack {
+
+        private final ArrayDeque<Integer> stackData;
+        private  final ArrayDeque<Integer> stackMin;
+
+
+        /** initialize your data structure here. */
+        public MinStack() {
+            stackData = new ArrayDeque<>();
+            stackMin = new ArrayDeque<>();
+        }
+
+        public void push(int val) {
+
+            if (stackMin.isEmpty()){
+                stackMin.push(val);
+                stackData.push(val);
+                return;
+            }
+            stackData.push(val);
+            int curMin = stackMin.peek();
+            if (curMin > val){
+                stackMin.push(val);
+            }
+        }
+
+        public void pop() {
+            int pop = stackData.pop();
+            if (pop == stackMin.poll()){
+                stackMin.pop();
+            }
+        }
+
+        public int top() {
+            return stackData.poll();
+        }
+
+        public int getMin() {
+            return stackMin.poll();
+        }
+    }
+
 
 
     @Data
