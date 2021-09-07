@@ -110,4 +110,27 @@ public class BranchPrediction {
         blackhole.consume(sum);
     }
 
+
+    @Benchmark
+    public void nonSortWithBit(Blackhole blackhole) {
+        int[] data = new int[arraySize];
+        //生成0-255范围的随机数并存入数组data
+        Random random = new Random();
+        for (int c = 0; c < arraySize; ++c) {
+            data[c] = random.nextInt(arraySize) & 255;
+        }
+        //对数组进行排序
+        long sum = 0;
+        for (int i = 0; i < 100000; ++i) {
+            for (int c = 0; c < arraySize; ++c) {
+
+                // 取出符号位
+                int bit = (data[c]-128)>>31;
+                // ~0&num = num ~-1&num = 0
+                sum += ~bit&data[c];
+            }
+        }
+        blackhole.consume(sum);
+    }
+
 }

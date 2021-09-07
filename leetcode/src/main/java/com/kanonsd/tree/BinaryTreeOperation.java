@@ -188,15 +188,15 @@ public class BinaryTreeOperation {
         //       F-D-H-G-I-B-E-A-C
         long pre = Long.MIN_VALUE;
         TreeNode cur = root;
-        while ( Objects.nonNull(cur) || !ldr.isEmpty() ){
+        while (Objects.nonNull(cur) || !ldr.isEmpty()) {
             // 当前节点存在左节点需要判断左子树是否存在,直到找到不存在左节点
-            while (Objects.nonNull(cur)){
+            while (Objects.nonNull(cur)) {
                 ldr.add(cur);
                 cur = cur.left;
             }
             // 没有左节点,移除当前节点并与前一个节点值对比
             cur = ldr.removeLast();
-            if(cur.val <= pre){
+            if (cur.val <= pre) {
                 return false;
             }
             pre = cur.val;
@@ -209,10 +209,10 @@ public class BinaryTreeOperation {
 
     public Node treeToDoublyList(Node root) {
         LinkedList<Node> ldr = new LinkedList<>();
-        Node cur = root,pre = new Node(),head = pre;
-        while (Objects.nonNull(cur) || !ldr.isEmpty()){
+        Node cur = root, pre = new Node(), head = pre;
+        while (Objects.nonNull(cur) || !ldr.isEmpty()) {
             // 节点入队
-            while (Objects.nonNull(cur)){
+            while (Objects.nonNull(cur)) {
                 ldr.add(cur);
                 cur = cur.left;
             }
@@ -222,20 +222,117 @@ public class BinaryTreeOperation {
             pre = cur;
             cur = cur.right;
         }
-        if (pre != head){
+        if (pre != head) {
             head.right.left = pre;
-            pre.right  = head.right;
+            pre.right = head.right;
         }
 
         return head.right;
     }
 
     @Test
-    public void testTreeToDoublyList(){
+    public void testTreeToDoublyList() {
         treeToDoublyList(createNode(new Integer[]{
-                4,2,5,1,3
+                4, 2, 5, 1, 3
         }));
     }
+
+
+    /**
+     * 二叉搜索树第k小
+     */
+    public int kthSmallest(TreeNode root, int k) {
+        List<TreeNode> ldrList = new ArrayList<>(k);
+        recursionLDR(root, k, ldrList);
+
+        return ldrList.remove(k - 1).val;
+    }
+
+    private void recursionLDR(TreeNode root, int k, List<TreeNode> ldrList) {
+        if (ldrList.size() >= k) {
+            return;
+        }
+        if (root == null) {
+            return;
+        }
+        recursionLDR(root.left, k, ldrList);
+        ldrList.add(root);
+        recursionLDR(root.right, k, ldrList);
+    }
+
+
+    @Test
+    public void testKthSmallest() {
+        log.info("kthSmallest = {}", kthSmallest(
+                createTree(new Integer[]{5, 3, 6, 2, 4, null, null, 1}), 4));
+    }
+
+
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        // 已经搜索到叶子节点
+        if (Objects.isNull(root)){
+            return null;
+        }
+        /**
+         *
+         * 找到了p或q,此时这个节点是候选节点
+         *
+         * 说明此时这颗子树上面包含 需要查找的节点
+         * 但是不知道这颗子树是不是最小的那颗
+         *
+         * 查找此时节点的 左子树 右子树
+         *
+         *
+         */
+        if (root == q || root == p){
+            return root;
+        }
+        /**
+         * 此节点不是p或q,需要判断p,q是否分别在左右子树上
+         */
+        TreeNode leftTree = lowestCommonAncestor(root.left, p, q);
+        TreeNode rightTree = lowestCommonAncestor(root.right, p, q);
+        /**
+         * p,q不在左子树上,那么需要去查找当前节点的右子树
+         * 也就是剪去除去 右子树的所有分叉
+         * 将右子树当做一颗新的树去找
+         *
+         */
+        if (Objects.isNull(leftTree)){
+            return rightTree;
+        }
+        /**
+         * p,q不在右子树上,查找左子树
+         * 也就是剪去除去 左子树的所有分叉
+         * 将左子树当做一颗新的树去找
+         */
+        else if (Objects.isNull(rightTree)){
+            return leftTree;
+        }
+        /**
+         * 这种情况说明p,q在左右子树上
+         * 并且一定分别在左右子树上
+         * 此时的节点就是 最近的
+         */
+        return root;
+    }
+
+
+    @Test
+    public void testLowestParent(){
+        TreeNode root = createTree(new Integer[]{
+                3, 5, 1, 6, 2, 0, 8, null, null, 7, 4
+        });
+        TreeNode p = root.left;
+        TreeNode q = root.right;
+        log.info("low = {}",lowestCommonAncestor(root,p,q));
+    }
+
+
+
+
+
+
 
 
     @Data
@@ -354,5 +451,114 @@ public class BinaryTreeOperation {
 
         return root;
     }
+
+
+
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+
+
+        for (int i = 0; i < inorder.length; i++) {
+            treeNodeIndex.put(inorder[i],i);
+        }
+        return buildTree(preorder,0,preorder.length,inorder,0);
+
+    }
+
+    private static Map<Integer,Integer> treeNodeIndex=new HashMap<>();
+
+    private static TreeNode buildTree(int[] preorder,int preStart,int preEnd,
+                                      int[] inorder,int inStart){
+        // 中序指针
+        if (/*inStart >= inEnd &&*/ preStart >= preEnd){
+            return null;
+        }
+        // 取出子树的根节点索引
+        Integer rootIndex = treeNodeIndex.get(preorder[preStart]);
+        // 子树的根节点
+        TreeNode root=new TreeNode(inorder[rootIndex]);
+        // 子树的左子树节点个数 1 2 3 4 5 6
+        int leftChildNum=rootIndex-inStart;
+        root.left=buildTree(preorder,preStart+1,preStart+leftChildNum+1,inorder,inStart);
+
+        root.right=buildTree(preorder,preStart+leftChildNum+1,preEnd,inorder,rootIndex+1);
+        return root;
+
+    }
+
+
+
+
+    public TreeNode buildTreeWithIP(int[] inorder, int[] postorder) {
+        Map<Integer,Integer> nodeIndexMap = new HashMap<>(inorder.length);
+        // 缓存节点和对应的位置
+        for (int i = 0; i < inorder.length; i++) {
+            nodeIndexMap.put(inorder[i], i);
+        }
+        return buildTreeWithIP(inorder,0,postorder,0,postorder.length-1,nodeIndexMap);
+    }
+
+    /**
+     *      1
+     *   2     3
+     * 4  5  6   7
+     *
+     * 4 2 5 1 6 3 7
+     * 4 5 2 6 7 3 1
+     *  1的左边是 左子树
+     *  1 的右边是右子树
+     *  此时 1的索引为 3
+     *  左子树的根节点为 2
+     *  右子树的根节点为 3
+     *
+     *
+     */
+
+    public TreeNode buildTreeWithIP(int[] inorder,int inStart,
+                                    int[] postorder,int postStart,int postEnd,Map<Integer,Integer> nodeIndexMap){
+        if (postStart > postEnd){
+            return null;
+        }
+        Integer rootIndex = nodeIndexMap.get(postorder[postEnd]);
+        // 最后一个数据为根节点
+        TreeNode root = new TreeNode(postorder[postEnd]);
+        /**
+         *
+         * 此时将左子树当做一个新的树
+         * 左子树在后序数组中的最后一个节点
+         * 为新树的根节点
+         *
+         */
+        // 中序中 构成左子树的节点个数 即后续数组中从postStart开始的 leftTreeNodeNum个元素
+        int leftTreeNodeNum = rootIndex - inStart;
+        // 左子树而言 后序[start , start+节点个数-1] 个节点为左子树 -1是因为数组索引
+        root.left = buildTreeWithIP(inorder,inStart,postorder,postStart,postStart+leftTreeNodeNum-1,nodeIndexMap);
+        // 右子树而言 后序[start+节点个数,end-1]  个节点构成 右子树 end已经使用所以取出
+        root.right = buildTreeWithIP(inorder,rootIndex+1,postorder,postStart+leftTreeNodeNum,postEnd-1,nodeIndexMap);
+        return root;
+
+    }
+
+
+
+
+    //     3
+//   / \
+//  9  20
+//    /  \
+//   15   7
+    @Test
+    public void testBuildTreeWithIP(){
+        buildTreeWithIP(new int[]{
+                9,3,15,20,7
+        },new int[]{
+                9,15,7,20,3
+        });
+    }
+
+
+
+
+
+
 
 }

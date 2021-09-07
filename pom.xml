@@ -8,6 +8,8 @@
         <module>leetcode</module>
         <module>effective-java</module>
         <module>redis</module>
+        <module>rocketmq</module>
+        <module>zookeeper</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

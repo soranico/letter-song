@@ -10,10 +10,6 @@ import java.util.Objects;
 @Slf4j
 public class LinkedOperation {
 
-    public ListNode reverseKGroup(ListNode head, int k) {
-
-        return null;
-    }
 
 
     /**
@@ -207,20 +203,20 @@ public class LinkedOperation {
         reorderList(null);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Test
+    public void test(){
+        ListNode head = getHead(new int[]{1,2});
+        int bitCount = 1;
+        for (ListNode cur = head;;++bitCount){
+            ListNode pre = cur;
+            if (cur.next == null){
+                cur.next = new ListNode();
+                break;
+            }
+            cur = cur.next;
+        }
+        log.info("bit = {}",bitCount);
+    }
 
     @Test
     public void testReverseBetween(){
@@ -228,6 +224,58 @@ public class LinkedOperation {
                 1,2,3,4,5
         }),3,4));
     }
+
+
+    public ListNode deleteDuplicatesII(ListNode head) {
+        // 空直接返回
+        if (Objects.isNull(head)){
+            return null;
+        }
+
+        ListNode pre = head,cur = head.next,preDiff = new ListNode();
+        // 保证preDiff和pre值永远不同
+        preDiff.next = head;
+        // 当前节点存在
+        while (Objects.nonNull(cur)){
+            // 前一个节点值
+            int val = pre.val;
+            // 值不同更新指针,指针依次后移即可
+            if (val != cur.val){
+                preDiff = pre;
+                pre = pre.next;
+                cur = cur.next;
+                continue;
+            }
+            // 找到下一个不同节点,如果相同此时 [pre,cur)之间的节点需要去处
+            while (Objects.nonNull(cur = cur.next) && cur.val == val);
+            // 说明从head开始是重复的
+            if (preDiff.next == head){
+                head = cur;
+            }
+            // 指向pre的前一个不同节点preDiff 指向 cur
+            preDiff.next = cur;
+            pre = cur;
+            if (Objects.nonNull(cur)){
+                cur = cur.next;
+            }
+
+        }
+        return head;
+    }
+
+    @Test
+    public void testDeleteDuplicatesII(){
+        log.info("deleteDuplicatesII = {}",listPrint(
+                deleteDuplicatesII(
+                        getHead(new int[]{
+                                1,1,2,2,3,3,4,4,5,5
+                        })
+                )
+        ));
+    }
+
+
+
 
     private List<Integer> listPrint(ListNode head){
         ListNode pre = head;

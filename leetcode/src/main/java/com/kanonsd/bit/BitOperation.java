@@ -87,41 +87,6 @@ public class BitOperation {
 
 
 
-    public void rotate(int[][] matrix) {
-
-        int val,x = 0,y =0,n = matrix.length-1;
-        // first
-        val = matrix[0][0];
-        matrix[0][0] = matrix[n][0];
-        matrix[n][0] = matrix[n][n];
-        matrix[n][n] = matrix[0][n];
-        matrix[0][n] = val;
-        // second
-        val = matrix[0][1];
-        matrix[0][1] = matrix[n][1];
-        matrix[n][1] = matrix[n][n-1];
-        matrix[n][n-1] = matrix[0][n-1];
-        matrix[0][n-1] = val;
-
-        // x,y
-        val = matrix[x][y] ;
-        matrix[x][y] = matrix[n-x][x];
-        matrix[n-x][x] = matrix[n-x][n-y];
-        matrix[n-x][n-y] = matrix[x][n-y];
-        matrix[x][n-y] = val;
-
-        for (x = 0; x <= n; x++) {
-
-
-        }
-
-
-
-
-
-
-    }
-
 
 
 

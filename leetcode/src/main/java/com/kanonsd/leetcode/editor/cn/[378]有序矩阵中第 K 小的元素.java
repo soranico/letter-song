@@ -37,7 +37,49 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int kthSmallest(int[][] matrix, int k) {
+        int max = matrix.length;
+        int[] nums = new int[max*max];
+        for (int i = 0; i < max; i++) {
+            System.arraycopy(matrix[i],0,nums,max*i,max);
+        }
 
+        // 快速排序  1...k-1 k ....
+
+        return quickSortK(nums,0,nums.length-1,k);
+    }
+
+    private int quickSortK(int[] nums,int start,int end,int k){
+        if (start > end){
+            return -1;
+        }
+        int low = start,high = end,base = nums[low];
+        while (low < high){
+            while (low < high && nums[high] >= base){
+                high--;
+            }
+            if (low < high){
+                nums[low] = nums[high];
+            }
+            while (low < high && nums[low] <= base){
+                low++;
+            }
+            if (low <high){
+                nums[high] = nums[low];
+            }
+        }
+        nums[low] = base;
+        // 此时low 为基准,从start ..... low 之间有 low - start +1 个数
+        if(low - start + 1 == k){
+            return base;
+        }
+        else if(low - start +1 > k){
+
+            return quickSortK(nums,start,low-1,k);
+        }
+        // 不足k个数,去除已经较小的的 low -start+1个
+        else {
+            return quickSortK(nums,low+1,end,k-low+start-1);
+        }
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

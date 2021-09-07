@@ -1,0 +1,41 @@
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int right = 1,numsLen = nums.length,max = nums[0],index =0
+                ,maxIndex = 0;
+        int[] windowMax = new int[numsLen - k + 1];
+        while (right <= numsLen){
+            // 窗口达到 k  计算
+            if (right >= k){
+                windowMax[index++] = max;
+                // 如果最大值此时在移除位置 4 1 -1  5 需要更新最大值
+                if (right - maxIndex == k && maxIndex+1 < numsLen){
+                    max = nums[++maxIndex];
+                    while (maxIndex+1 <= right && maxIndex+1 < numsLen && max < nums[maxIndex+1]){
+                        max = nums[maxIndex];
+                        maxIndex++;
+                    }
+                }
+
+            }
+            if (right == numsLen){
+                break;
+            }
+            // 计算最大值
+            if (max < nums[right]){
+                max = nums[right];
+                maxIndex = right;
+            }
+            // 窗口扩大
+            right++;
+
+        }
+        return windowMax;
+    }
+}
+
+//total_testcases:61
+//total_correct:28
+//input_formatted:[1,3,1,2,0,5]
+3
+//expected_output:[3,3,2,5]
+//code_output:[3,3,1,5]
