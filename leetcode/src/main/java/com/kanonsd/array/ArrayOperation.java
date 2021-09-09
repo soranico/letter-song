@@ -386,44 +386,108 @@ public class ArrayOperation {
      *
      * 不可以包含重复的三元组
      *
+     * 	测试用例:[-1,0,1,2,-1,-4]
+     * 	期望结果:[[-1,-1,2],[-1,0,1]]
+     *
      */
     public List<List<Integer>> threeSum(int[] nums) {
 
         if (nums.length<3){
-            return null;
+            return Collections.emptyList();
         }
         Arrays.sort(nums);
-        // -1,0,1,2,-1,-4    -4,-1,-1,,-1,0,1,2
-        // -1,-1,0,1,2
+
+        /**
+         *
+         * -1,0,1,2,-1,-4
+         *
+         * -4,-1,-1,0,1,2
+         * 如果三层循环的话
+         * 对于 m
+         * 遍历n - len n > m
+         * 对于 n
+         * 遍历 k - len k > n
+         * 如果数组是递增的
+         * 那么对于
+         * n 和 k  而言
+         * m + n + k = 0
+         * 则下次必然只有
+         * n增加 k减少
+         */
         List<List<Integer>> three = new ArrayList<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] > 0){
+
+        for (int m = 0; m < nums.length; m++) {
+            // 此种情况肯定不存在仍然满足的,直接退出
+            if (nums[m] > 0){
                 return three;
             }
-            int low = i+1,high = nums.length-1;
-            while (low < high){
-                int sum = nums[i] + nums[low] + nums[high];
-                // 说明high指针指向偏大
-                if (sum > 0) {
-                    high--;
+            /**
+             * 保证
+             * nums[m] <= nums[n] <= nums[k]
+             * m < n < k
+             *
+             * 如果当前m指向和前一个元素相同,直接过滤这个元素
+             * 对于 m 指针而言,如果 m 指针 当前和下一个元素值相同
+             * 0,0,0,0,...,0 这种情况下
+             * m = 0 找到了 0,0,0 组合
+             *
+             * 也就是一轮可以找到包含 nums[m]的所有符合组合 A
+             *
+             * 对于下轮而言，如果元素相同，那么这轮找到的组合 B
+             * 有关系 A 包含 B
+             * 因为需要去处 相同元素
+             */
+            if (m != 0 && nums[m] == nums[m-1]){
+                continue;
+            }
+            // 元素不能重复使用,需要从当前数字的下一位开始
+            // 让 k指针指向 最后一个元素
+            int n = m+1,k = nums.length-1;
+            /**
+             * 找到 以 nums[m] 开头的组合
+             * 这一轮会把包含 nums[m] 所有满足的找出来
+             *
+             */
+            for (; n < k;) {
+                int sum = nums[m] + nums[n] + nums[k];
+                if (sum == 0){
+                    three.add(Arrays.asList(nums[m],nums[n],nums[k]));
+                    /**
+                     * 移动 n 和 k 找到下一个满足的
+                     * 此时 n 和 k 都已经使用了
+                     * 对于 n 而言下个数肯定大于等于当前数
+                     * 此时 移动 k 找到一个小于nums[k]的数
+                     *
+                     * 不移动 n 指针 因为此时 k 指针指向的元素
+                     * 改变了,如果n 指向的下个元素 和nums[n]
+                     * 相同那么是不会
+                     *
+                     */
+                    int num = nums[k];
+                    while (n < k && num == nums[k]){
+                        k--;
+                    }
+
                 }
-                // 说明low指针偏小
-                else if (sum < 0){
-                    low++;
+                /**
+                 * 此情况下说明 k 指向的值偏大了
+                 * 移动 k 指针
+                 */
+                else if (sum > 0){
+                    k--;
                 }
-                // 满足
+                /**
+                 * 此情况说明 对于当前m而言 n偏小了
+                 * 移动 n 指针
+                 */
                 else {
-                    three.add(Arrays.asList(nums[i],nums[low],nums[high]));
-                    while (low < high && nums[low++] == nums[low]);
-                    while (low < high && nums[high--]== nums[high]);
+                    n++;
                 }
+                
             }
         }
 
-
-
-
-        return null;
+        return three;
     }
 
     @Test
@@ -562,6 +626,13 @@ public class ArrayOperation {
                 },7
         ));
     }
+
+
+
+//    public List<List<Integer>> threeSum(int[] nums) {
+//        List<List<Integer>> treeList = new ArrayList<>();
+//        return treeList;
+//    }
 
 
 
