@@ -1,0 +1,77 @@
+
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public int widthOfBinaryTree(TreeNode root) {
+
+        if (root == null){
+            return -1;
+        }
+        LinkedList<TreeNode> stack = new LinkedList<>();
+        TreeNode empty = new TreeNode();
+        Consumer<TreeNode> addOrEmpty = cur->{
+            if (cur == null)
+                stack.addLast(empty);
+            else
+                stack.addLast(cur);
+        };
+        addOrEmpty.accept(root);
+        int maxWidth = 1;
+        while (!stack.isEmpty()){
+            /**
+             * 宽度是第一个非 empty
+             * 节点到最后一个 非empty 节点
+             * 之间的距离
+             */
+            int first = -1, second = -1,size = stack.size();
+            for (int i = 0; i < size ; i++) {
+                TreeNode cur = stack.removeFirst();
+                /**
+                 * 为空过滤 直到存在第一个节点
+                 * 后面的空节点需要计数
+                 */
+                if (cur == empty && first == -1){
+                    continue;
+                }else if (first == -1){
+                    first = i;
+                }else if (cur != empty){
+                    second = i;
+                }
+                addOrEmpty.accept(cur.left);
+                addOrEmpty.accept(cur.right);
+            }
+
+            if (first == -1){
+                break;
+            }
+            maxWidth = Math.max(maxWidth,second - first + 1);
+
+        }
+        return maxWidth;
+    }
+}
+
+//runtime:N/A
+//memory:N/A
+//total_testcases:112
+//total_correct:72
+//input_formatted:[0,0,0,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null]
+//expected_output:2
+//code_output:
+//runtime_error:
+//last_testcase:[0,0,0,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null,null,0,0,null]

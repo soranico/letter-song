@@ -3,9 +3,7 @@ package com.kanonsd.link;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Slf4j
 public class LinkedOperation {
@@ -284,7 +282,7 @@ public class LinkedOperation {
          *
          *
          */
-        if (k==1){
+        if (k == 1) {
             return head;
         }
         int stamp = 1;
@@ -327,7 +325,7 @@ public class LinkedOperation {
             cur = nextK;
             if (preStart == head) {
                 head = pre;
-            }else {
+            } else {
                 preStart.next = pre;
             }
 
@@ -336,17 +334,368 @@ public class LinkedOperation {
         return head;
     }
 
+
     @Test
     public void testReverseKGroup() {
         log.info("reverseKGroup = {}", listPrint(
                 reverseKGroup(
                         getHead(new int[]{
-                                1, 2, 3, 4, 5,6,7
+                                1, 2, 3, 4, 5, 6, 7
                         }), 7
                 )
         ));
     }
 
+    /**
+     * //输入：head = [1,2,3,4]
+     * //输出：[2,1,4,3]
+     */
+    public ListNode swapPairs(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        ListNode pre = new ListNode(), curPre = head, cur = head.next, next;
+        boolean first = true;
+        while (cur != null) {
+            next = cur.next;
+            curPre.next = null;
+            cur.next = curPre;
+            pre.next = cur;
+            if (pre != head)
+                pre = curPre;
+            if (first) {
+                first = false;
+                head = cur;
+            }
+            curPre = next;
+            if (curPre == null) {
+                break;
+            }
+            cur = curPre.next;
+        }
+
+        if (curPre != null) {
+            pre.next = curPre;
+        }
+
+        return head;
+    }
+
+    @Test
+    public void testSwapPairs() {
+        log.info("swapPairs = {}", listPrint(swapPairs(getHead(new int[]{
+                1, 2, 3, 4, 5, 6, 7, 8, 9
+        }))));
+    }
+
+    @SuppressWarnings("all")
+    public Node copyRandomList(Node head) {
+        if (head == null) {
+            return null;
+        }
+        Node copyHead = new Node(head.val), copyPre = copyHead, copyCur;
+        Node cur = head.next;
+        Map<Node, Node> cacheMap = new HashMap<>(16);
+        cacheMap.put(head, copyHead);
+        copyHead.random = cacheMap.computeIfAbsent(head.random, key->key == null ? null : new Node(key.val));
+        while (cur != null) {
+            // 已经构建过复用
+            copyCur = cacheMap.getOrDefault(cur, new Node(cur.val));
+            cacheMap.put(cur, copyCur);
+            copyCur.random = cacheMap.computeIfAbsent(cur.random, key->key == null ? null : new Node(key.val));
+            copyPre.next = copyCur;
+            copyPre = copyCur;
+            cur = cur.next;
+        }
+        return copyHead;
+    }
+
+
+    static class Node {
+        int val;
+        Node next;
+        Node random;
+
+        public Node(int val) {
+            this.val = val;
+            this.next = null;
+            this.random = null;
+        }
+    }
+
+    @Test
+    public void testCopyRandomList() {
+//        [7,null],[13,0],[11,4],[10,2],[1,0]
+        Node head = new Node(7);
+        Node next = new Node(13);
+
+        next.random = head;
+        head.next = next;
+
+        Node nextNext = new Node(11);
+        next.next = nextNext;
+
+        Node nextNextNext = new Node(10);
+        Node nextNextNextNext = new Node(1);
+
+        nextNext.next = nextNextNext;
+        nextNext.random = nextNextNextNext;
+
+        nextNextNext.next = nextNextNextNext;
+        nextNextNext.random = nextNext;
+
+        nextNextNextNext.random = head;
+
+        log.info("copyRandomList = {}", copyRandomList(head));
+    }
+
+
+    /**
+     * // 输入: 1->2->3->4->5->NULL
+     * //输出: 1->3->5->2->4->NULL
+     *
+     * // 输入: 2->1->3->5->6->4->7->NULL
+     * //输出: 2->3->6->7->1->5->4->NULL
+     * @param head
+     * @return
+     */
+    public ListNode oddEvenList(ListNode head) {
+        if (head == null){
+            return null;
+        }
+        ListNode odd = head ,even = head.next,
+                cur = head.next,oddCur = odd,evenCur = even;
+        int curIndex = 1;
+        while (cur != null){
+            cur = cur.next;
+            /**
+             * 偶数节点
+             */
+            if (curIndex++ %2 == 0){
+                evenCur.next = cur;
+                // 最后一个节点为偶节点 不做任何操作
+                evenCur = cur;
+
+            }else {
+                // 最后一个节点是奇节点
+                if (cur == null){
+                    evenCur.next = null;
+                }else {
+                    oddCur.next = cur;
+                    oddCur = cur;
+                }
+            }
+        }
+
+        oddCur.next = even;
+        // 将奇偶链接
+        return odd;
+    }
+
+    @Test
+    public void testOddEvenList(){
+        log.info("oddEvenList = {}",listPrint(
+                oddEvenList(
+                getHead(new int[]{
+                  1,2,3,4,5
+                })
+        ))
+        );
+    }
+
+
+    /**
+     * 86
+     *
+     //输入：head = [1,4,3,2,5,2], x = 3
+     //输出：[1,2,2,4,3,5]
+
+     //输入：head = [2,1], x = 2
+     //输出：[1,2]
+     */
+    public ListNode partition(ListNode head, int x) {
+        if (head == null){
+            return null;
+        }
+        ListNode ltNode = new ListNode(),gtNode = new ListNode(),
+                cur = head, ltCur = ltNode, gtCur = gtNode;
+        while (cur != null){
+            if (cur.val >= x){
+                gtCur.next = cur;
+                gtCur = cur;
+            }else {
+                /**
+                 * 最后一个节点是小于指定数的节点
+                 * 说明上一个大于指定数的节点存在
+                 * 下个节点避免死环,这个时候需要断开连接
+                 */
+                if (cur.next == null){
+                    gtCur.next = null;
+                }
+                ltCur.next = cur;
+                ltCur = cur;
+            }
+            cur = cur.next;
+        }
+        ltCur.next = gtNode.next;
+        return ltNode.next;
+
+    }
+
+    @Test
+    public void testPartition(){
+        log.info("partition = {}",listPrint(partition(getHead(new int[]{
+                2,1
+        }),2
+        )));
+    }
+
+
+    /**
+     * 876
+     * 如果有两个中间结点，则返回第二个中间结点。
+     *
+     * //输入：[1,2,3,4,5]
+     * //输出：此列表中的结点 3 (序列化形式：[3,4,5])
+     *
+     * //输入：[1,2,3,4,5,6]
+     * //输出：此列表中的结点 4 (序列化形式：[4,5,6])
+     * @param head
+     * @return
+     */
+    public ListNode middleNode(ListNode head) {
+        ListNode quick = head,slow = head;
+        /**
+         * 快指针每次走两步
+         * 慢指针每次走一步
+         * 快指针走到尾时慢指针指向中间节点
+         */
+        while (slow != null && slow.next !=null){
+            quick = quick.next;
+            slow = slow.next.next;
+        }
+
+        return quick;
+
+    }
+
+    @Test
+    public void testMiddleNode(){
+        log.info("middleNode = {}",middleNode(
+                getHead(new int[]{
+                        1,2,3,4
+                })
+        ));
+    }
+
+
+    /**
+     * 21
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1==null){
+            return l2;
+        }else if (l2==null){
+            return l1;
+        }
+        ListNode head = l1.val >= l2.val ? l2 : l1;
+        ListNode pre = head;
+        ListNode current ;
+        if (head == l1) {
+            l1 = l1.next;
+        } else {
+            l2 = l2.next;
+        }
+        while (l1 != null && l2 != null) {
+            if (l1.val >= l2.val) {
+                current = l2;
+                l2 = l2.next;
+            } else {
+                current = l1;
+                l1 = l1.next;
+            }
+            pre.next = current;
+            pre = pre.next;
+
+        }
+        pre.next = l1 == null ? l2 : l1;
+
+        return head;
+    }
+
+    /**
+     *  23
+     *
+     * @param lists
+     * @return
+     */
+    public ListNode mergeKLists(ListNode[] lists) {
+        if (lists.length==0){
+            return null;
+        }else if (lists.length ==1){
+            return lists[0];
+        }
+
+        /**
+         *
+         * 0 1 , 2 3 , 4 5
+         * 0 ,2 ,4
+         * 0,4
+         * 0
+         */
+        int next = 0,max = lists.length;
+        while (true){
+            for (int i = 0; i < max -1; i+=2) {
+                lists[next++] = merge(lists[i],lists[i+1]);
+            }
+            if(next == 1 && (max&1) ==0){
+                break;
+            }else if ((max&1) != 0){
+                lists[next++] = lists[max-1];
+            }
+            max = next;
+            next = 0;
+        }
+        return lists[0];
+    }
+
+
+    private ListNode merge(ListNode first ,ListNode second){
+        ListNode firstCur = first,secondCur = second,
+                firstNext,secondNext,head = new ListNode(),cur = head;
+        while (firstCur !=null && secondCur!=null){
+            firstNext = firstCur.next;
+            secondNext = secondCur.next;
+            if (firstCur.val > secondCur.val){
+                cur.next = secondCur;
+                secondCur = secondNext;
+            }else if (secondCur.val > firstCur.val){
+                cur.next = firstCur;
+                firstCur = firstNext;
+            }else {
+                cur.next = firstCur;
+                cur = cur.next;
+                cur.next = secondCur;
+                firstCur = firstNext;
+                secondCur = secondNext;
+            }
+            cur = cur.next;
+        }
+        cur.next = firstCur ==null?secondCur:firstCur;
+        return head.next;
+    }
+
+    @Test
+    public void testMergeKLists(){
+        // [2,6]
+        log.info("mergeKLists = {}",listPrint(mergeKLists(new ListNode[]{
+                getHead(new int[]{1,4,5}),getHead(new int[]{1,4,5}),
+                getHead(new int[]{4,5}),getHead(new int[]{5}),getHead(new int[]{1})
+        })));
+    }
 
     private List<Integer> listPrint(ListNode head) {
         ListNode pre = head;
@@ -359,6 +708,9 @@ public class LinkedOperation {
     }
 
     private static ListNode getHead(int[] node) {
+        if (node.length == 0) {
+            return null;
+        }
         ListNode head = new ListNode(node[0]), pre = head;
         for (int i = 1; i < node.length; i++) {
             pre.next = new ListNode(node[i]);

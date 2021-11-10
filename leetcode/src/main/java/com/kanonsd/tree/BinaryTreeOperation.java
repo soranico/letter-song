@@ -558,7 +558,156 @@ public class BinaryTreeOperation {
 
 
 
+    public boolean isCompleteTree(TreeNode root) {
+        LinkedList<TreeNode> levelList = new LinkedList<>();
+        levelList.add(root);
+        // 如果下层有数据，那么上层必须是满的
+        int level = 0;
+        while (!levelList.isEmpty()){
+
+            boolean first = false,notFull = levelList.size() != 1<<(level++);
+            for (int i = levelList.size()-1; i >=0 ; i--) {
+                TreeNode cur = levelList.removeFirst();
+                if (notFull && (cur.right!=null || cur.left!=null)){
+                    return false;
+                }
+                // 第一个存在孩子后，前面必须存在孩子
+                if (cur.left==null && cur.right!=null){
+                    return false;
+                }
+                if (first && (cur.left==null || cur.right==null)){
+                    return false;
+                }
+                if (cur.right!=null){
+                    first = true;
+                    levelList.addLast(cur.right);
+                }
+                if (cur.left!=null){
+                    first = true;
+                    levelList.addLast(cur.left);
+                }
+            }
+        }
+
+        return true;
+    }
 
 
+
+
+    @Test
+    public void testIsCompleteTree(){
+        log.info("isCompleteTree = {}",isCompleteTree(
+                createTree(
+                        new Integer[]{
+                                1,2,3,4,5,6,7,8,9,10,11,12,13,null,null,15
+                        }
+                )
+        ));
+    }
+
+
+    /**
+     * [3,1,4,null,2], k = 1
+     * 4
+     *
+     *
+     * [5,3,6,2,4,null,null,1], k = 3
+     * 4
+     *
+     * 二叉搜索树第k大
+     *
+     */
+    public int kthLargest(TreeNode root, int k) {
+        // 中序遍历是个有序数组
+        List<Integer> nums = new ArrayList<>();
+
+        LinkedList<TreeNode> ldrList = new LinkedList<>();
+        TreeNode cur = root;
+        while (!ldrList.isEmpty() || cur!=null){
+            while (cur!=null){
+                ldrList.push(cur);
+                cur = cur.left;
+            }
+            TreeNode curRoot = ldrList.pop();
+            nums.add(curRoot.val);
+            if (curRoot.right!=null){
+                cur = curRoot.right;
+            }
+        }
+
+        return nums.get(nums.size()-k);
+    }
+
+    @Test
+    public void testKthLargest(){
+        log.info("kthLargest = {}",kthLargest(createTree(
+                new Integer[]{
+                        3,1,4,null,2
+                }
+        ),4));
+    }
+
+
+    
+
+    /**
+     * 662
+     */
+    public int widthOfBinaryTree(TreeNode root) {
+        /**
+         *
+         * 假设是一颗完全二叉树
+         * 那么存在 对于节点 i
+         * 其左孩子索引为 2*i+1
+         * 右孩子索引为 2*i+2
+         * 对于同层的宽度而言
+         * 最左节点所在位置假设为 L
+         * 最右节点所在位置假设为 R
+         * 则宽度 = L - R + 1
+         *
+         * 将每一层看成一个数组
+         * 数组中的每个节点的索引由其父节点索引决定
+         * 初始 root  = 0
+         * 则 左孩子索引 1 右孩子 索引 2
+         */
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        BiConsumer<TreeNode,Integer> addOrEmpty = (cur,index)->{
+            if (cur != null) {
+                cur.val = index;
+                queue.addLast(cur);
+            }
+        };
+        addOrEmpty.accept(root,0);
+        int maxWidth = 1;
+        while (!queue.isEmpty()){
+            /**
+             * 计算第一个和最后一个索引
+             * 的距离即当前层的最大宽度
+             */
+            int firstIndex = queue.getFirst().val , lastIndex = queue.getLast().val,
+                    size = queue.size();
+            for (int i = 0; i < size ; i++) {
+                TreeNode cur = queue.removeFirst();
+                addOrEmpty.accept(cur.left,(cur.val<<1) + 1);
+                addOrEmpty.accept(cur.right,(cur.val<<1) + 2);
+            }
+
+            maxWidth = Math.max(maxWidth,lastIndex - firstIndex + 1);
+
+        }
+        return maxWidth;
+    }
+
+    @Test
+    public void testWidthOfBinaryTree(){
+        log.info("widthOfBinaryTree = {}",widthOfBinaryTree(
+                createTree(
+                        new Integer[]{
+                                1,3,2,5,null,null,9,6,null,null,7
+                        }
+                )
+        ));
+    }
 
 }
