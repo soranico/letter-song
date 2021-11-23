@@ -452,11 +452,16 @@ public class BinaryTreeOperation {
         return root;
     }
 
-
-
+    /**
+     * 105
+     * 前序和中序构建树
+     */
     public TreeNode buildTree(int[] preorder, int[] inorder) {
 
-
+        /**
+         * 缓存每个节点对应的索引
+         * 对于中序节点而言 left root child 也就是 左边部分是做子树 右边部分是右子树
+         */
         for (int i = 0; i < inorder.length; i++) {
             treeNodeIndex.put(inorder[i],i);
         }
@@ -468,8 +473,8 @@ public class BinaryTreeOperation {
 
     private static TreeNode buildTree(int[] preorder,int preStart,int preEnd,
                                       int[] inorder,int inStart){
-        // 中序指针
-        if (/*inStart >= inEnd &&*/ preStart >= preEnd){
+        // 前序起始大于终止也就是没有子节点了直接返回null
+        if ( preStart >= preEnd){
             return null;
         }
         // 取出子树的根节点索引
