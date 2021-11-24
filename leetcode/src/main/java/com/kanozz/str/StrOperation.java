@@ -3,8 +3,6 @@ package com.kanozz.str;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-import java.io.FileInputStream;
-
 @Slf4j
 public class StrOperation {
 
@@ -150,60 +148,6 @@ public class StrOperation {
     }
 
 
-    /**
-     * 最长回文子串
-     * <p>
-     * //输入：s = "babad"
-     * //输出："bab"
-     * //解释："aba" 同样是符合题意的答案。
-     *
-     * @param s
-     * @return
-     */
-    public String longestPalindrome(String s) {
-
-
-        return "";
-    }
-
-
-    /**
-     * 相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格
-     * [["A","B","C","E"],
-     * ["S","F","C","S"],
-     * ["A","D","E","E"]],
-     * true
-     * "ABCCED"
-     * "SEE"
-     * <p>
-     * false
-     * ABCB"
-     */
-    public boolean exist(char[][] board, String word) {
-        char[] wordChar = word.toCharArray();
-        //
-
-
-        return false;
-    }
-
-    /**
-     * 0、1、2、3、4这5个数字组成一个圆圈，
-     * 从数字0开始每次删除第3个数字，则删除的前4个数字依次是2、0、4、1，
-     * 因此最后剩下的数字是3。
-     * <p>
-     * 10 17
-     * 2
-     */
-    public int lastRemaining(int n, int m) {
-        return -1;
-    }
-
-    @Test
-    public void testLastRemaining() {
-        log.info("lastRemaining = {}", lastRemaining(5, 1));
-    }
-
 
     /**
      * 165
@@ -226,135 +170,10 @@ public class StrOperation {
      * //输出：-1
      */
     public int compareVersion(String version1, String version2) {
-        int firstStart = 0, firstEnd = 0, secondStart = 0, secondEnd = 0;
-        int max = Math.max(version1.length(), version2.length());
-        char[] firstArr = version1.toCharArray(), secondArr = version2.toCharArray();
-        char[] maxArr = max == version1.length() ? firstArr : secondArr, minArr = maxArr == firstArr ? secondArr : firstArr;
-        for (int i = 0; i < max; i++) {
-            if (i > minArr.length) {
-                if (maxArr[i] == '.') {
-                    int compare = compare(firstStart, i, maxArr, 0, 0, null);
-                    if (compare != 0) {
-                        return compare;
-                    }
-                    firstStart = i + 1;
-                }
-            } else {
-                if (maxArr[i] == '.' && minArr[i] != '.') {
-                    int tmp = i;
-                    while (tmp < minArr.length && minArr[tmp] != '.') {
-                        tmp++;
-                    }
-                    if (tmp > minArr.length) {
-                        int compare = compare(firstStart, i, maxArr, 0, 0, null);
-                        if (compare != 0) {
-                            return compare;
-                        }
-                    } else {
-                        int compare = compare(firstStart, i, maxArr, secondStart, tmp, minArr);
-                        if (compare != 0) {
-                            return compare;
-                        }
-                    }
-                } else if (minArr[i] == '.' && maxArr[i] != '.') {
-                    int tmp = i;
-                    while (tmp < maxArr.length && maxArr[tmp] != '.') {
-                        tmp++;
-                    }
-                    if (tmp > maxArr.length) {
-                        int compare = compare(firstStart, maxArr.length - 1, maxArr, secondStart, i, null);
-                        if (compare != 0) {
-                            return compare;
-                        }
-                    } else {
-                        int compare = compare(firstStart, i, maxArr, secondStart, tmp, minArr);
-                        if (compare != 0) {
-                            return compare;
-                        }
-                    }
-                }
-            }
-            firstEnd++;
-            secondEnd++;
-        }
+
         return -1;
     }
 
-    private int compare(int firstStart, int firstEnd, char[] first,
-                        int secondStart, int secondEnd, char[] second) {
-        if (second == null) {
-            while (firstStart <= firstEnd) {
-                if (first[firstStart++] != '0') {
-                    return 1;
-                }
-            }
-        }
-        // 过滤无效符号
-        while (first[firstStart] != '0') {
-            firstStart++;
-        }
-        while (second[secondStart] != '0') {
-            secondStart++;
-        }
-        while (firstStart <= firstEnd && secondStart <= secondEnd) {
-            if (first[firstStart] == second[secondStart]) {
-                firstStart++;
-                secondStart++;
-            } else if (first[firstStart] > second[secondStart]) {
-                return 1;
-            } else {
-                return -1;
-            }
-        }
 
-        if (firstStart > firstEnd) {
-            return compare(secondStart, secondEnd, second, -1);
-        } else {
-            return compare(firstStart, firstEnd, first, 1);
-        }
-    }
-
-    private int compare(int start, int end, char[] arr, int retVal) {
-        for (int i = start; i <= end; i++) {
-            if (arr[start] != '0') {
-                return retVal;
-            }
-        }
-        return 0;
-    }
-
-
-    public int compress(char[] chars) {
-        int compress = 0;
-        for (int i = 0; i < chars.length; i++) {
-            if (i < chars.length - 1) {
-                if (chars[i] == chars[i + 1]) {
-                    compress++;
-                }
-            }
-        }
-        return 1;
-    }
-
-
-    public static void main(String[] args) throws Exception {
-        long loop = 0;
-
-        while (true) {
-            loop++;
-            try {
-                /**
-                 * 内存泄露,无法引用打开的输入流但也没有关闭
-                 */
-                FileInputStream is = new FileInputStream("/Users/kano/Desktop/program/lettersong.jpg");
-            }catch (Exception e){
-                e.printStackTrace();
-                System.out.println(loop);
-                break;
-            }
-
-        }
-
-    }
 
 }

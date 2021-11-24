@@ -1,4 +1,4 @@
-package algorithm;
+package com.kanozz.algorithm;
 
 import org.junit.Test;
 

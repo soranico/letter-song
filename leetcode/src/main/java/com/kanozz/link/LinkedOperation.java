@@ -55,6 +55,10 @@ public class LinkedOperation {
         return head;
     }
 
+    /**
+     * 143
+     * @param head
+     */
     // L0→Ln→L1→Ln-1→L2→Ln-2→
     public void reorderList(ListNode head) {
         ListNode cur = head, pre;
@@ -128,52 +132,8 @@ public class LinkedOperation {
     }
 
 
-    public ListNode sortList(ListNode head) {
-
-        mergeSort(head, null);
 
 
-        return head;
-    }
-
-    private void mergeSort(ListNode head, ListNode tail) {
-        if (head == tail || head.next == tail)
-            return;
-        ListNode quick = head, slow = head, next;
-        while (Objects.nonNull(quick)) {
-            quick = quick.next;
-            if (Objects.isNull(quick))
-                break;
-            quick = quick.next;
-            slow = slow.next;
-        }
-        next = slow.next;
-        slow.next = null;
-        mergeSort(head, slow);
-        mergeSort(next, tail);
-        ListNode empty = new ListNode();
-        while (head != slow && next != tail) {
-            if (head.val > next.val) {
-                empty.next = next;
-                empty = empty.next;
-                next = next.next;
-                continue;
-            }
-            empty.next = head;
-            empty = empty.next;
-            head = head.next;
-        }
-
-
-    }
-
-
-    @Test
-    public void testSortList() {
-        log.info("sortList = {}", listPrint(sortList(getHead(new int[]{
-                -1, 5, 3, 4, 0
-        }))));
-    }
 
 
     @Test
@@ -734,5 +694,61 @@ public class LinkedOperation {
             this.val = val;
             this.next = next;
         }
+    }
+
+
+    /**
+     * 148
+     * TODO
+     * @param head
+     * @return
+     */
+    public ListNode sortList(ListNode head) {
+
+        mergeSort(head, null);
+
+
+        return head;
+    }
+
+    private void mergeSort(ListNode head, ListNode tail) {
+        if (head == tail || head.next == tail)
+            return;
+        ListNode quick = head, slow = head, next;
+        while (Objects.nonNull(quick)) {
+            quick = quick.next;
+            if (Objects.isNull(quick))
+                break;
+            quick = quick.next;
+            slow = slow.next;
+        }
+        next = slow.next;
+        slow.next = null;
+        mergeSort(head, slow);
+        mergeSort(next, tail);
+        ListNode empty = new ListNode();
+        while (head != slow && next != tail) {
+            if (head.val > next.val) {
+                empty.next = next;
+                empty = empty.next;
+                next = next.next;
+                continue;
+            }
+            empty.next = head;
+            empty = empty.next;
+            head = head.next;
+        }
+
+
+    }
+
+
+
+
+    @Test
+    public void testSortList() {
+        log.info("sortList = {}", listPrint(sortList(getHead(new int[]{
+                -1, 5, 3, 4, 0
+        }))));
     }
 }
