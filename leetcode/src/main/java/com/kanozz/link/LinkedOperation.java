@@ -699,47 +699,75 @@ public class LinkedOperation {
 
     /**
      * 148
-     * TODO
-     * @param head
-     * @return
+     * 排序链表
      */
     public ListNode sortList(ListNode head) {
 
-        mergeSort(head, null);
-
-
-        return head;
+        return  mergeSort(head, null);
     }
 
-    private void mergeSort(ListNode head, ListNode tail) {
-        if (head == tail || head.next == tail)
-            return;
-        ListNode quick = head, slow = head, next;
-        while (Objects.nonNull(quick)) {
-            quick = quick.next;
-            if (Objects.isNull(quick))
-                break;
-            quick = quick.next;
-            slow = slow.next;
+    private ListNode mergeSort(ListNode head, ListNode tail) {
+        /**
+         * 只有一个节点那么需要返回进行排序
+         */
+        if (head == tail || head.next ==null) {
+            return head;
         }
-        next = slow.next;
-        slow.next = null;
-        mergeSort(head, slow);
-        mergeSort(next, tail);
-        ListNode empty = new ListNode();
-        while (head != slow && next != tail) {
-            if (head.val > next.val) {
-                empty.next = next;
-                empty = empty.next;
-                next = next.next;
-                continue;
+        /**
+         * 只存在两个节点
+         * 那么先对两个节点进行排序
+         */
+        else if (head.next == tail){
+            if (head.val > tail.val){
+                tail.next = head;
+                head.next = null;
+                return tail;
             }
-            empty.next = head;
-            empty = empty.next;
-            head = head.next;
+            return head;
         }
+        ListNode quick = head, middle = head, next;
+        /**
+         * 利用快慢指针找到当前 head - tail的中间点
+         * 即进行 分治法的 分
+         */
+        while (quick!=null && quick.next!=null){
+            quick = quick.next.next;
+            middle = middle.next;
+        }
+        /**
+         * 断开中间节点和其下个节点的指针
+         */
+        next = middle.next;
+        middle.next = null;
+        ListNode firstList = mergeSort(head, middle);
+        ListNode secondList = mergeSort(next, tail);
 
 
+        ListNode emptyNode = new ListNode(),emptyHead = emptyNode;
+
+        /**
+         * 从 head - middle 和 next - tail
+         * 分别排序合并
+         * 分支法的治
+         * 开始进行链表的重新链接
+         */
+        while (firstList != null && secondList != null) {
+            if (firstList.val > secondList.val) {
+                emptyNode.next = secondList;
+                next = secondList.next;
+                secondList.next = null;
+                secondList = next;
+            }else {
+                emptyNode.next = firstList;
+                next = firstList.next;
+                firstList.next = null;
+                firstList = next;
+            }
+            emptyNode = emptyNode.next;
+        }
+        emptyNode.next = firstList == null? secondList:firstList;
+
+        return emptyHead.next;
     }
 
 
@@ -748,7 +776,7 @@ public class LinkedOperation {
     @Test
     public void testSortList() {
         log.info("sortList = {}", listPrint(sortList(getHead(new int[]{
-                -1, 5, 3, 4, 0
+               9,0,7,10,-1,-20,80,67
         }))));
     }
 }
