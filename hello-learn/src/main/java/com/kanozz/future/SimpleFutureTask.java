@@ -4,9 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 @Slf4j
 public class SimpleFutureTask {
@@ -99,6 +97,115 @@ public class SimpleFutureTask {
 
     }
 
+
+    @Test
+    public void testCancelIsRunning() throws Exception{
+        ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(1,1,0,TimeUnit.SECONDS,new ArrayBlockingQueue<>(1));
+        Task task;
+        CompletableFuture future1 = CompletableFuture.runAsync(task = new Task(()->{
+            try {
+                log.info("future1 start");
+//                while (true){
+//
+//                }
+                TimeUnit.SECONDS.sleep(10);
+
+            }catch (Exception e){
+                log.info("future1 end");
+                e.printStackTrace();
+            }finally {
+                log.info("future1 final");
+            }
+        }),poolExecutor);
+
+        CompletableFuture future2 = CompletableFuture.runAsync(new Task(()->{
+            try {
+                log.info("future2 start");
+                TimeUnit.SECONDS.sleep(3);
+                log.info("future2 end");
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }),poolExecutor);
+
+        try {
+            future1.get(3,TimeUnit.SECONDS);
+        }catch (Exception e){
+            log.info("future1 cancel");
+            future1.complete("");
+            task.stopTask();
+        }
+
+
+//        CompletableFuture future3 = CompletableFuture.runAsync(()->{
+//            try {
+//                log.info("future3 end");
+//            }catch (Exception e){
+//
+//            }
+//        },poolExecutor);
+
+
+       while (poolExecutor.getActiveCount()>0){
+           TimeUnit.SECONDS.sleep(1);
+       }
+
+
+    }
+
+    private static class Task implements Runnable{
+        private volatile boolean run;
+        private volatile boolean cancel;
+        private volatile  Thread runThread;
+        private Runnable task;
+
+        public Task(Runnable task){
+            this.task = task;
+        }
+
+        @Override
+        public void run() {
+            if (cancel){
+                return;
+            }
+            runThread = Thread.currentThread();
+            run = true;
+            task.run();
+        }
+
+        public void stopTask(){
+            if (run){
+                runThread.interrupt();
+                return;
+            }
+            cancel = true;
+        }
+    }
+
+
+    @Test
+    public void testFinally(){
+        log.info("{}",kano());
+    }
+
+    private boolean kano(){
+        int i = 0;
+        try {
+            return i>0;
+        }finally {
+            i = 2;
+//            return false;
+        }
+    }
+
+    private boolean kano1(){
+       Object kano = null;
+        try {
+            return kano!=null;
+        }finally {
+            kano = new Object();
+        }
+    }
 
 
 }

@@ -11,14 +11,26 @@ public class MemoryLeak {
 
 
     @Test
-    public void notCloseIo(){
+    public void notCloseIo() {
+        InputStream is = null;
         try {
-            while (true) {
-                InputStream is = MemoryLeak.class.getResourceAsStream("/JmhSwitchAndIf.txt");
-                BufferedInputStream fileIs = new BufferedInputStream(is);
+            is = MemoryLeak.class.getResourceAsStream("/JmhSwitchAndIf.txt");
+            int kano = 1/0;
+        } catch (Exception e) {
+            log.error("", e);
+        }
+        if (is!=null){
+            try {
+                BufferedInputStream reader = new BufferedInputStream(is);
+                byte[] cache = new byte[1024];
+                int stop ;
+                while ((stop = reader.read(cache,0,1024))!=-1){
+                    log.info("line = {}",new String(cache,0,stop));
+                }
+            }catch (Exception e){
+                log.error("",e);
             }
-        }catch (Exception e){
-            log.error("",e);
+
         }
     }
 
