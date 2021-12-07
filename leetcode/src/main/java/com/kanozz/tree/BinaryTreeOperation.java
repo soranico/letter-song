@@ -715,4 +715,41 @@ public class BinaryTreeOperation {
         ));
     }
 
+
+    /**
+     * pass
+     * 面 04.02
+     * 最小高度树
+     * 有序整数数组，元素各不相同且按升序排列，编写一个算法，创建一棵高度最小的二叉搜索树
+     * [-10,-3,0,5,9,10]
+     */
+    public TreeNode sortedArrayToBST(int[] nums) {
+
+
+        return buildBST(nums,0,nums.length-1);
+    }
+
+    private TreeNode buildBST(int[] nums,int start,int end){
+        TreeNode cur = null;
+        if (start <= end){
+            int middle = (start+end)>>>1;
+            cur = new TreeNode(nums[middle]);
+            // 构建左节点
+            cur.left = buildBST(nums,start,middle-1);
+            // 构建右节点
+            cur.right = buildBST(nums,middle+1,end);
+        }
+        return cur;
+    }
+
+    @Test
+    public void testSortedArrayToBST(){
+        log.info("sortedArrayToBST = {}",sortedArrayToBST(new int[]{
+                -10,-3
+        }));
+    }
+
+
+
+
 }

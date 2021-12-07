@@ -13,14 +13,15 @@ public class DpOperation {
         /**
          *
          *   k a n o o n a k
-         * k
-         * a
-         * n
-         * o
-         * o
-         * n
-         * a
-         * k
+         * k 1 0 0
+         * a   1 0
+         * n     1 0
+         * o       1
+         * o         1
+         * n           1
+         * a             1
+         * k                1
+         * 对角线的元素肯定是一个回文子串,因为只有一个字符
          *
          */
         char[] arr = s.toCharArray();
