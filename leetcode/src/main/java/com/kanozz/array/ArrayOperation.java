@@ -865,9 +865,7 @@ public class ArrayOperation {
                  * 否则 cur 最小
                  */
                 dpMin[i] = dpMin[i - 1] <= 0 ? cur * dpMin[i - 1] : cur;
-            }
-
-            else if (cur >= 0 && dpMax[i - 1] <= 0) {
+            } else if (cur >= 0 && dpMax[i - 1] <= 0) {
                 // 连续数组最大值就是本身
                 dpMax[i] = cur;
 
@@ -886,9 +884,7 @@ public class ArrayOperation {
                 dpMax[i] = cur;
                 // 正数 * 负数 最小值肯定更小
                 dpMin[i] = cur * dpMax[i - 1];
-            }
-
-            else if (cur <= 0 && dpMin[i - 1] <= 0) {
+            } else if (cur <= 0 && dpMin[i - 1] <= 0) {
                 // 负数 * 负数 一定变大
                 dpMax[i] = cur * dpMin[i - 1];
 
@@ -910,7 +906,7 @@ public class ArrayOperation {
     public void testMaxProduct() {
         log.info("maxProduct = {}", maxProduct(
                 new int[]{
-                       -2,0,-1
+                        -2, 0, -1
                 }
         ));
     }
@@ -921,15 +917,15 @@ public class ArrayOperation {
      * [1,3,2,4]
      */
     public int[] exchange(int[] nums) {
-        if (nums.length==0){
+        if (nums.length == 0) {
             return nums;
         }
         int[] changeNums = new int[nums.length];
-        int low = 0,high = nums.length-1;
+        int low = 0, high = nums.length - 1;
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] %2 == 0){
+            if (nums[i] % 2 == 0) {
                 changeNums[high--] = nums[i];
-            }else {
+            } else {
                 changeNums[low++] = nums[i];
             }
         }
@@ -938,9 +934,9 @@ public class ArrayOperation {
     }
 
     @Test
-    public void testExchange(){
-        log.info("exchange = {}",exchange(new int[]{
-                1,2,3,4
+    public void testExchange() {
+        log.info("exchange = {}", exchange(new int[]{
+                1, 2, 3, 4
         }));
     }
 
@@ -951,6 +947,7 @@ public class ArrayOperation {
      * //输出：[3,5]
      * //解释：[5, 3] 也是有效的答案。
      * // 2 <= nums.length <= 3 * 10⁴
+     *
      * @param nums
      * @return
      */
@@ -975,8 +972,8 @@ public class ArrayOperation {
          * 异或结果从低位到高位第一个1
          * 也就是两个不同数第一个不同的位
          */
-        while ((xor & 1) == 0){
-            xor = xor>>>1;
+        while ((xor & 1) == 0) {
+            xor = xor >>> 1;
             rightFirstBit++;
         }
         for (int num : nums) {
@@ -984,20 +981,20 @@ public class ArrayOperation {
              * 如果两个数相同,在指定位肯定相同
              * 此时相同的数肯定在一个组里面
              */
-            if ((num >>> rightFirstBit & 1) == 0){
+            if ((num >>> rightFirstBit & 1) == 0) {
                 first = first ^ num;
-            }else {
+            } else {
                 second = second ^ num;
             }
         }
-        return new int[]{first,second};
+        return new int[]{first, second};
     }
 
     @Test
-    public void testSingleNumber(){
-        log.info("singleNumber = {}",singleNumber(
+    public void testSingleNumber() {
+        log.info("singleNumber = {}", singleNumber(
                 new int[]{
-                        1,2,1,3,2,5
+                        1, 2, 1, 3, 2, 5
                 }
         ));
 
@@ -1007,70 +1004,70 @@ public class ArrayOperation {
      *
      */
     public int[] getLeastNumbers(int[] arr, int k) {
-        if (k == 0){
+        if (k == 0) {
             return new int[0];
         }
         int[] min = new int[k];
-        quickMinK(arr.length-1,0,arr,k);
-        System.arraycopy(arr,0,min,0,k);
+        quickMinK(arr.length - 1, 0, arr, k);
+        System.arraycopy(arr, 0, min, 0, k);
         return min;
     }
 
-    private void quickMinK(int high,int low,int[] arr,int k){
-        if (low > high){
-            return ;
+    private void quickMinK(int high, int low, int[] arr, int k) {
+        if (low > high) {
+            return;
         }
-        int left = high, right = low,base = arr[low];
-        while (right < left){
-            while (right < left && arr[left] >= base){
+        int left = high, right = low, base = arr[low];
+        while (right < left) {
+            while (right < left && arr[left] >= base) {
                 left--;
             }
-            if (right < left){
+            if (right < left) {
                 arr[right] = arr[left];
             }
-            while (right < left && arr[right] <= base){
+            while (right < left && arr[right] <= base) {
                 right++;
             }
-            if (right <left){
+            if (right < left) {
                 arr[left] = arr[right];
             }
         }
         // low . . right 之间有 right - low +1 个数
         arr[right] = base;
-        int width = right - low +1;
+        int width = right - low + 1;
         if (width == k) {
             return;
-        }else if (width > k){
-            quickMinK(right,low,arr,k);
-        }else {
+        } else if (width > k) {
+            quickMinK(right, low, arr, k);
+        } else {
             // 此时right指向的位置肯定包含在k个数内,右移低位指针
-            quickMinK(high,right+1,arr,k- width);
+            quickMinK(high, right + 1, arr, k - width);
         }
     }
 
     @Test
-    public void testGetLeastNumbers(){
-        log.info("getLeastNumbers = {}",getLeastNumbers(new int[]{
-                0,0,0,2,0,5
-        },0));
+    public void testGetLeastNumbers() {
+        log.info("getLeastNumbers = {}", getLeastNumbers(new int[]{
+                0, 0, 0, 2, 0, 5
+        }, 0));
     }
 
     /**
      * 剑指66
-     *
+     * <p>
      * //给定一个数组 A[0,1,…,n-1]，请构建一个数组 B[0,1,…,n-1]，
      * 其中 B[i] 的值是数组 A 中除了下标 i 以外的元素的积, 即
      * B[i]=A[0]×A[1]×…×A[i-1]×A[i+1]×…×A[n-1]。不能使用除法。
-     *
+     * <p>
      * //输入: [1,2,3,4,5]
      * //输出: [120,60,40,30,24]
      */
     public int[] constructArr(int[] a) {
         int len = a.length;
-        if (len == 0){
+        if (len == 0) {
             return new int[0];
         }
-        int [] b = new int[len];
+        int[] b = new int[len];
         /**
          *
          * b[0] = 1
@@ -1084,7 +1081,7 @@ public class ArrayOperation {
          */
         b[0] = 1;
         for (int i = 1; i < len; i++) {
-            b[i] = b[i-1] * a[i-1];
+            b[i] = b[i - 1] * a[i - 1];
         }
         /**
          * b[len-1] = a[0] * ... * a[len-2]
@@ -1100,8 +1097,8 @@ public class ArrayOperation {
          * len - 3 data = data * a[len-2] = a[len -1] * a[len -2]
          */
         int data = 1;
-        for (int i = len-2; i >=0 ; i--) {
-            data *= a[i+1];
+        for (int i = len - 2; i >= 0; i--) {
+            data *= a[i + 1];
             b[i] = b[i] * data;
         }
 
@@ -1109,12 +1106,38 @@ public class ArrayOperation {
     }
 
     @Test
-    public void testConstructArr(){
-        log.info("constructArr = {}",constructArr(new int[]{
+    public void testConstructArr() {
+        log.info("constructArr = {}", constructArr(new int[]{
 
         }));
     }
 
+    /**
+     * 26
+     * pass
+     * 删除有序数组的重复项
+     */
+    public int removeDuplicates(int[] nums) {
+        int len = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            /**
+             * 此时保留第一个
+             * 同时 len + 1
+             * 然后找到下一个不相同的数字
+             */
+            if (nums[i] != nums[i + 1]) {
+                nums[++len] = nums[i + 1];
+            }
+        }
+        return len + 1;
+    }
+
+    @Test
+    public void testRemoveDuplicates() {
+        log.info("removeDuplicates = {}", removeDuplicates(new int[]{
+                1,2,3
+        }));
+    }
 
 
 }
