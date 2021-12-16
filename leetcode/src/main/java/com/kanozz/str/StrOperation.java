@@ -6,56 +6,57 @@ import org.junit.Test;
 @Slf4j
 public class StrOperation {
 
-
+    /**
+     * 8 字符串转整数
+     * pass
+     */
     public int myAtoi(String s) {
-        char space = ' ', sign = ' ', add = '+', sub = '-';
-        char[] chars = s.toCharArray();
-        boolean hasNum = false;
-        StringBuilder num = new StringBuilder();
-        for (int i = 0; i < chars.length; i++) {
-            char cur = chars[i];
-            // 空格 或 前导0忽略
-            if (cur == space) {
-            } else if (cur == 0x30 && num.length() == 0) {
-                hasNum = true;
-            }
-            // 存在多个正负符退出
-            else if ((sign != space || hasNum) && (cur == add || cur == sub)) {
+        StringBuilder atoi = new StringBuilder(32);
+        int len = s.length();
+        boolean positive = true;
+        for (int i = 0; i < len; i++) {
+            char c = s.charAt(i);
+            // 已经存在 + - 数字,后面不是 数字直接退出
+            if (atoi.length() > 0 && (c<0x30 || c > 0x39)){
                 break;
-            }
-            // 符号位
-            else if (sign == space && (cur == add || cur == sub) && num.length() == 0) {
-                sign = cur;
-            }
-            // 非数字直接退出
-            else if (cur < 0x30 || cur > 0x39) {
-                break;
-            } else {
-                num.append(cur);
+            }else if (atoi.length()==0){
+                if (c == ' ') {
+                }
+                // 符号
+                else if (c == '-'){
+                    positive = false;
+                    atoi.append('-');
+                }else if (c == '+')
+                    atoi.append('+');
+                // 非符号和空格退出
+                else if (c<0x30 || c > 0x39)
+                    break;
+                // 数字添加
+                else
+                    atoi.append(c);
+            }else {
+                atoi.append(c);
             }
         }
-        if (num.length() == 0) return 0;
-        String max = "+" + Integer.MAX_VALUE, min = String.valueOf(Integer.MIN_VALUE);
-        num.insert(0, sign == space ? add : sign);
-
-        if (num.length() < 11) {
-            return sign == space || sign == add ? Integer.parseInt(num.toString()) :
-                    Integer.parseInt(num.toString());
-        } else if (num.length() > 11) {
-            return sign == sub ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+        if (atoi.length()==0 ||
+                (atoi.length()==1 &&
+                        (atoi.charAt(0)=='-' || atoi.charAt(0)=='+'))){
+            return 0;
         }
-        if (sign == sub) {
-            return min.compareTo(num.toString()) > 0 ? Integer.parseInt(num.toString())
-                    : Integer.MIN_VALUE;
+        try {
+            return Integer.parseInt(atoi.toString());
+        }catch (NumberFormatException ignore){
+            return positive?Integer.MAX_VALUE:Integer.MIN_VALUE;
         }
-
-        return max.compareTo(num.toString()) > 0 ? Integer.parseInt(num.toString()) : Integer.MAX_VALUE;
     }
 
 
     @Test
     public void testMyAtoi() {
-        log.info("atoi = {}", myAtoi("21474836460"));
+        log.info("atoi = {}", myAtoi("++1"));
+        log.info("atoi = {}", myAtoi("--1"));
+        log.info("atoi = {}", myAtoi("-+1"));
+        log.info("atoi = {}", myAtoi("+-1"));
         log.info("atoi = {}", myAtoi("  00000000000-12345678"));
         log.info("atoi = {}", myAtoi("   -42"));
         log.info("atoi = {}", myAtoi("words and 987"));
