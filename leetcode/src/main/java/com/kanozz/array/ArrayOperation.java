@@ -1140,4 +1140,29 @@ public class ArrayOperation {
     }
 
 
+    /**
+     * 718
+     * 最长重复子数组
+     *
+     * //A: [1,2,3,2,1]
+     * //B: [3,2,1,4,7]
+     * //输出：3
+     * //解释：
+     * //长度最长的公共子数组是 [3, 2, 1] 。
+     */
+    public int findLength(int[] nums1, int[] nums2) {
+        int len = 0;
+
+        return len;
+    }
+
+
+    @Test
+    public void testFindLength(){
+        log.info("findLength = {}",findLength(
+                new int[]{ 0,0,0,0,0,0,1,0,0,0 },
+                new int[]{ 0,0,0,0,0,0,0,1,0,0 }));
+    }
+
+
 }
