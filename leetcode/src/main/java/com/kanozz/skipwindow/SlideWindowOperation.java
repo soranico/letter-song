@@ -46,9 +46,10 @@ public class SlideWindowOperation {
     }
 
 
-
-
-
+    /**
+     * 239
+     * 滑动窗口最大值
+     */
     public int[] maxSlidingWindow(int[] nums, int k) {
         //
         int right = 1,numsLen = nums.length,max = nums[0],index =0
@@ -56,6 +57,11 @@ public class SlideWindowOperation {
         int[] windowMax = new int[numsLen - k + 1];
         while (right <= numsLen){
             // 窗口达到 k  计算
+            /**
+             * 此时窗口的左边界就是最大值所在的位置
+             * 也就是此时再移动最大值的这个位置不在窗口内
+             * 所以需要在当前窗口中找到新的最大值
+             */
             if (right - maxIndex == k && maxIndex +1 < numsLen){
                 windowMax[index++] = max;
                 // 如果最大值此时在移除位置 4 1 -1  5 需要更新最大值
@@ -69,7 +75,12 @@ public class SlideWindowOperation {
                     }
                 }
 
-            }else if (right >= k){
+            }
+            /**
+             * 最大值不在窗口的左边界
+             * 直接更新即可
+             */
+            else if (right >= k){
                 windowMax[index++] = max;
             }
             if (right == numsLen){

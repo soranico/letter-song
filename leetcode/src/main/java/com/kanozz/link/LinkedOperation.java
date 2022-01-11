@@ -587,8 +587,8 @@ public class LinkedOperation {
     }
 
     /**
-     *  23
-     *
+     * 23
+     * 合并k个升序链表
      * @param lists
      * @return
      */
@@ -699,6 +699,7 @@ public class LinkedOperation {
 
     /**
      * 148
+     * pass
      * 排序链表
      */
     public ListNode sortList(ListNode head) {

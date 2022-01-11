@@ -70,6 +70,10 @@ public class BinaryTreeOperation {
 
 
     /**
+     * 199
+     * 二叉树的右视图
+     * pass
+     * <p>
      * 给定一棵二叉树，想象自己站在它的右侧，
      * 按照从顶部到底部的顺序，返回从右侧所能看到的节点值。
      * 输入:[1,2,3,null,5,null,4]
@@ -95,6 +99,9 @@ public class BinaryTreeOperation {
         depList.add(root);
         List<Integer> seeValList = new ArrayList<>();
         while (!depList.isEmpty()) {
+            /**
+             * 同一层只能看到第一个节点的值
+             */
             seeValList.add(depList.getLast().val);
             for (int i = depList.size() - 1; i >= 0; i--) {
                 TreeNode cur = depList.removeLast();
@@ -107,7 +114,11 @@ public class BinaryTreeOperation {
         return seeValList;
     }
 
-
+    /**
+     * 110
+     * 平衡二叉树
+     * pass
+     */
     public boolean isBalanced(TreeNode root) {
         List<TreeNode> levelList = new ArrayList<>();
 
@@ -122,6 +133,9 @@ public class BinaryTreeOperation {
                 TreeNode cur = levelList.remove(i);
                 int leftDep = maxDep(cur.left);
                 int rightDep = maxDep(cur.right);
+                /**
+                 * 左右子树高度大于1
+                 */
                 if (Math.abs(leftDep - rightDep) > 1) {
                     return false;
                 }
@@ -142,6 +156,11 @@ public class BinaryTreeOperation {
         if (depMap.containsKey(root)) {
             return depMap.get(root);
         }
+        /**
+         * 这个节点不为 null 那么高度至少为1
+         * 本身就是一个
+         * 递归求出左右子树的较高值
+         */
         int maxDep = Math.max(maxDep(root.right), maxDep(root.left)) + 1;
         depMap.put(root, maxDep);
         return maxDep;
@@ -182,6 +201,11 @@ public class BinaryTreeOperation {
         })));
     }
 
+    /**
+     * 98
+     * 验证二叉搜索树
+     * 中序遍历
+     */
     public boolean isValidBST(TreeNode root) {
         LinkedList<TreeNode> ldr = new LinkedList<>();
 
@@ -207,6 +231,12 @@ public class BinaryTreeOperation {
     }
 
 
+    /**
+     * 剑36
+     * 二叉搜索树与双向链表
+     * <p>
+     * 中序遍历构建
+     */
     public Node treeToDoublyList(Node root) {
         LinkedList<Node> ldr = new LinkedList<>();
         Node cur = root, pre = new Node(), head = pre;
@@ -268,9 +298,13 @@ public class BinaryTreeOperation {
     }
 
 
+    /**
+     * 236
+     * 二叉树最近公共祖先
+     */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         // 已经搜索到叶子节点
-        if (Objects.isNull(root)){
+        if (Objects.isNull(root)) {
             return null;
         }
         /**
@@ -284,7 +318,7 @@ public class BinaryTreeOperation {
          *
          *
          */
-        if (root == q || root == p){
+        if (root == q || root == p) {
             return root;
         }
         /**
@@ -298,7 +332,7 @@ public class BinaryTreeOperation {
          * 将右子树当做一颗新的树去找
          *
          */
-        if (Objects.isNull(leftTree)){
+        if (Objects.isNull(leftTree)) {
             return rightTree;
         }
         /**
@@ -306,7 +340,7 @@ public class BinaryTreeOperation {
          * 也就是剪去除去 左子树的所有分叉
          * 将左子树当做一颗新的树去找
          */
-        else if (Objects.isNull(rightTree)){
+        else if (Objects.isNull(rightTree)) {
             return leftTree;
         }
         /**
@@ -319,20 +353,14 @@ public class BinaryTreeOperation {
 
 
     @Test
-    public void testLowestParent(){
+    public void testLowestParent() {
         TreeNode root = createTree(new Integer[]{
                 3, 5, 1, 6, 2, 0, 8, null, null, 7, 4
         });
         TreeNode p = root.left;
         TreeNode q = root.right;
-        log.info("low = {}",lowestCommonAncestor(root,p,q));
+        log.info("low = {}", lowestCommonAncestor(root, p, q));
     }
-
-
-
-
-
-
 
 
     @Data
@@ -463,66 +491,77 @@ public class BinaryTreeOperation {
          * 对于中序节点而言 left root child 也就是 左边部分是做子树 右边部分是右子树
          */
         for (int i = 0; i < inorder.length; i++) {
-            treeNodeIndex.put(inorder[i],i);
+            treeNodeIndex.put(inorder[i], i);
         }
-        return buildTree(preorder,0,preorder.length,inorder,0);
+        return buildTree(preorder, 0, preorder.length, inorder, 0);
 
     }
 
-    private static Map<Integer,Integer> treeNodeIndex=new HashMap<>();
+    private static Map<Integer, Integer> treeNodeIndex = new HashMap<>();
 
-    private static TreeNode buildTree(int[] preorder,int preStart,int preEnd,
-                                      int[] inorder,int inStart){
+    private static TreeNode buildTree(int[] preorder, int preStart, int preEnd,
+                                      int[] inorder, int inStart) {
         // 前序起始大于终止也就是没有子节点了直接返回null
-        if ( preStart >= preEnd){
+        if (preStart >= preEnd) {
             return null;
         }
         // 取出子树的根节点索引
         Integer rootIndex = treeNodeIndex.get(preorder[preStart]);
         // 子树的根节点
-        TreeNode root=new TreeNode(inorder[rootIndex]);
+        TreeNode root = new TreeNode(inorder[rootIndex]);
         // 子树的左子树节点个数 1 2 3 4 5 6
-        int leftChildNum=rootIndex-inStart;
-        root.left=buildTree(preorder,preStart+1,preStart+leftChildNum+1,inorder,inStart);
+        int leftChildNum = rootIndex - inStart;
+        root.left = buildTree(preorder, preStart + 1, preStart + leftChildNum + 1, inorder, inStart);
 
-        root.right=buildTree(preorder,preStart+leftChildNum+1,preEnd,inorder,rootIndex+1);
+        root.right = buildTree(preorder, preStart + leftChildNum + 1, preEnd, inorder, rootIndex + 1);
         return root;
 
     }
 
 
-
-
+    /**
+     * 106
+     * 中序和后序构建二叉树
+     */
     public TreeNode buildTreeWithIP(int[] inorder, int[] postorder) {
-        Map<Integer,Integer> nodeIndexMap = new HashMap<>(inorder.length);
+        Map<Integer, Integer> nodeIndexMap = new HashMap<>(inorder.length);
         // 缓存节点和对应的位置
         for (int i = 0; i < inorder.length; i++) {
             nodeIndexMap.put(inorder[i], i);
         }
-        return buildTreeWithIP(inorder,0,postorder,0,postorder.length-1,nodeIndexMap);
+        /**
+         * 初始的时候后序数组最后一个节点为 root
+         */
+        return buildTreeWithIP(inorder, 0, postorder, 0, postorder.length - 1, nodeIndexMap);
     }
 
     /**
-     *      1
-     *   2     3
+     * 1
+     * 2     3
      * 4  5  6   7
-     *
+     * <p>
      * 4 2 5 1 6 3 7
      * 4 5 2 6 7 3 1
-     *  1的左边是 左子树
-     *  1 的右边是右子树
-     *  此时 1的索引为 3
-     *  左子树的根节点为 2
-     *  右子树的根节点为 3
-     *
-     *
+     * 1的左边是 左子树
+     * 1 的右边是右子树
+     * 此时 1的索引为 3
+     * 左子树的根节点为 2
+     * 右子树的根节点为 3
      */
 
-    public TreeNode buildTreeWithIP(int[] inorder,int inStart,
-                                    int[] postorder,int postStart,int postEnd,Map<Integer,Integer> nodeIndexMap){
-        if (postStart > postEnd){
+    public TreeNode buildTreeWithIP(int[] inorder, int inStart,
+                                    int[] postorder, int postStart, int postEnd, Map<Integer, Integer> nodeIndexMap) {
+        /**
+         * 后序使用完
+         */
+        if (postStart > postEnd) {
             return null;
         }
+        /**
+         * 当前根节点在中序的位置
+         * 前部分是左子树
+         * 后部分是右子树
+         */
         Integer rootIndex = nodeIndexMap.get(postorder[postEnd]);
         // 最后一个数据为根节点
         TreeNode root = new TreeNode(postorder[postEnd]);
@@ -536,14 +575,12 @@ public class BinaryTreeOperation {
         // 中序中 构成左子树的节点个数 即后续数组中从postStart开始的 leftTreeNodeNum个元素
         int leftTreeNodeNum = rootIndex - inStart;
         // 左子树而言 后序[start , start+节点个数-1] 个节点为左子树 -1是因为数组索引
-        root.left = buildTreeWithIP(inorder,inStart,postorder,postStart,postStart+leftTreeNodeNum-1,nodeIndexMap);
+        root.left = buildTreeWithIP(inorder, inStart, postorder, postStart, postStart + leftTreeNodeNum - 1, nodeIndexMap);
         // 右子树而言 后序[start+节点个数,end-1]  个节点构成 右子树 end已经使用所以取出
-        root.right = buildTreeWithIP(inorder,rootIndex+1,postorder,postStart+leftTreeNodeNum,postEnd-1,nodeIndexMap);
+        root.right = buildTreeWithIP(inorder, rootIndex + 1, postorder, postStart + leftTreeNodeNum, postEnd - 1, nodeIndexMap);
         return root;
 
     }
-
-
 
 
     //     3
@@ -552,15 +589,13 @@ public class BinaryTreeOperation {
 //    /  \
 //   15   7
     @Test
-    public void testBuildTreeWithIP(){
+    public void testBuildTreeWithIP() {
         buildTreeWithIP(new int[]{
-                9,3,15,20,7
-        },new int[]{
-                9,15,7,20,3
+                9, 3, 15, 20, 7
+        }, new int[]{
+                9, 15, 7, 20, 3
         });
     }
-
-
 
 
     public boolean isCompleteTree(TreeNode root) {
@@ -568,26 +603,26 @@ public class BinaryTreeOperation {
         levelList.add(root);
         // 如果下层有数据，那么上层必须是满的
         int level = 0;
-        while (!levelList.isEmpty()){
+        while (!levelList.isEmpty()) {
 
-            boolean first = false,notFull = levelList.size() != 1<<(level++);
-            for (int i = levelList.size()-1; i >=0 ; i--) {
+            boolean first = false, notFull = levelList.size() != 1 << (level++);
+            for (int i = levelList.size() - 1; i >= 0; i--) {
                 TreeNode cur = levelList.removeFirst();
-                if (notFull && (cur.right!=null || cur.left!=null)){
+                if (notFull && (cur.right != null || cur.left != null)) {
                     return false;
                 }
                 // 第一个存在孩子后，前面必须存在孩子
-                if (cur.left==null && cur.right!=null){
+                if (cur.left == null && cur.right != null) {
                     return false;
                 }
-                if (first && (cur.left==null || cur.right==null)){
+                if (first && (cur.left == null || cur.right == null)) {
                     return false;
                 }
-                if (cur.right!=null){
+                if (cur.right != null) {
                     first = true;
                     levelList.addLast(cur.right);
                 }
-                if (cur.left!=null){
+                if (cur.left != null) {
                     first = true;
                     levelList.addLast(cur.left);
                 }
@@ -598,14 +633,12 @@ public class BinaryTreeOperation {
     }
 
 
-
-
     @Test
-    public void testIsCompleteTree(){
-        log.info("isCompleteTree = {}",isCompleteTree(
+    public void testIsCompleteTree() {
+        log.info("isCompleteTree = {}", isCompleteTree(
                 createTree(
                         new Integer[]{
-                                1,2,3,4,5,6,7,8,9,10,11,12,13,null,null,15
+                                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, null, null, 15
                         }
                 )
         ));
@@ -615,13 +648,12 @@ public class BinaryTreeOperation {
     /**
      * [3,1,4,null,2], k = 1
      * 4
-     *
-     *
+     * <p>
+     * <p>
      * [5,3,6,2,4,null,null,1], k = 3
      * 4
-     *
+     * <p>
      * 二叉搜索树第k大
-     *
      */
     public int kthLargest(TreeNode root, int k) {
         // 中序遍历是个有序数组
@@ -629,32 +661,30 @@ public class BinaryTreeOperation {
 
         LinkedList<TreeNode> ldrList = new LinkedList<>();
         TreeNode cur = root;
-        while (!ldrList.isEmpty() || cur!=null){
-            while (cur!=null){
+        while (!ldrList.isEmpty() || cur != null) {
+            while (cur != null) {
                 ldrList.push(cur);
                 cur = cur.left;
             }
             TreeNode curRoot = ldrList.pop();
             nums.add(curRoot.val);
-            if (curRoot.right!=null){
+            if (curRoot.right != null) {
                 cur = curRoot.right;
             }
         }
 
-        return nums.get(nums.size()-k);
+        return nums.get(nums.size() - k);
     }
 
     @Test
-    public void testKthLargest(){
-        log.info("kthLargest = {}",kthLargest(createTree(
+    public void testKthLargest() {
+        log.info("kthLargest = {}", kthLargest(createTree(
                 new Integer[]{
-                        3,1,4,null,2
+                        3, 1, 4, null, 2
                 }
-        ),4));
+        ), 4));
     }
 
-
-    
 
     /**
      * 662
@@ -677,39 +707,39 @@ public class BinaryTreeOperation {
          * 则 左孩子索引 1 右孩子 索引 2
          */
         LinkedList<TreeNode> queue = new LinkedList<>();
-        BiConsumer<TreeNode,Integer> addOrEmpty = (cur,index)->{
+        BiConsumer<TreeNode, Integer> addOrEmpty = (cur, index) -> {
             if (cur != null) {
                 cur.val = index;
                 queue.addLast(cur);
             }
         };
-        addOrEmpty.accept(root,0);
+        addOrEmpty.accept(root, 0);
         int maxWidth = 1;
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             /**
              * 计算第一个和最后一个索引
              * 的距离即当前层的最大宽度
              */
-            int firstIndex = queue.getFirst().val , lastIndex = queue.getLast().val,
+            int firstIndex = queue.getFirst().val, lastIndex = queue.getLast().val,
                     size = queue.size();
-            for (int i = 0; i < size ; i++) {
+            for (int i = 0; i < size; i++) {
                 TreeNode cur = queue.removeFirst();
-                addOrEmpty.accept(cur.left,(cur.val<<1) + 1);
-                addOrEmpty.accept(cur.right,(cur.val<<1) + 2);
+                addOrEmpty.accept(cur.left, (cur.val << 1) + 1);
+                addOrEmpty.accept(cur.right, (cur.val << 1) + 2);
             }
 
-            maxWidth = Math.max(maxWidth,lastIndex - firstIndex + 1);
+            maxWidth = Math.max(maxWidth, lastIndex - firstIndex + 1);
 
         }
         return maxWidth;
     }
 
     @Test
-    public void testWidthOfBinaryTree(){
-        log.info("widthOfBinaryTree = {}",widthOfBinaryTree(
+    public void testWidthOfBinaryTree() {
+        log.info("widthOfBinaryTree = {}", widthOfBinaryTree(
                 createTree(
                         new Integer[]{
-                                1,3,2,5,null,null,9,6,null,null,7
+                                1, 3, 2, 5, null, null, 9, 6, null, null, 7
                         }
                 )
         ));
@@ -726,30 +756,95 @@ public class BinaryTreeOperation {
     public TreeNode sortedArrayToBST(int[] nums) {
 
 
-        return buildBST(nums,0,nums.length-1);
+        return buildBST(nums, 0, nums.length - 1);
     }
 
-    private TreeNode buildBST(int[] nums,int start,int end){
+    private TreeNode buildBST(int[] nums, int start, int end) {
         TreeNode cur = null;
-        if (start <= end){
-            int middle = (start+end)>>>1;
+        if (start <= end) {
+            int middle = (start + end) >>> 1;
             cur = new TreeNode(nums[middle]);
             // 构建左节点
-            cur.left = buildBST(nums,start,middle-1);
+            cur.left = buildBST(nums, start, middle - 1);
             // 构建右节点
-            cur.right = buildBST(nums,middle+1,end);
+            cur.right = buildBST(nums, middle + 1, end);
         }
         return cur;
     }
 
     @Test
-    public void testSortedArrayToBST(){
-        log.info("sortedArrayToBST = {}",sortedArrayToBST(new int[]{
-                -10,-3
+    public void testSortedArrayToBST() {
+        log.info("sortedArrayToBST = {}", sortedArrayToBST(new int[]{
+                -10, -3
         }));
     }
 
 
+
+    /**
+     *
+     * 124 二叉树最大路径和
+     * pass
+     *
+     * 对于一个节点 root
+     * 过这个节点的最大路径为
+     * max(0,L) + root + max(0,R)
+     * <p>
+     * 对于子树的路径求解可以递归
+     * 当子树没有子节点的时候,最大路径就是其本身
+     *    -10
+     *  9     20
+     *      15   7
+     *
+     */
+    private int maxPath = Integer.MIN_VALUE;
+    public int maxPathSum(TreeNode root) {
+        maxPathSumRecursion(root);
+        return maxPath;
+    }
+
+
+    private int maxPathSumRecursion(TreeNode root) {
+        /**
+         * 没有子节点,节点值为0
+         */
+        if (root == null) {
+            return 0;
+        }
+        /**
+         * 右孩子的最大路径
+         */
+        int maxRight = maxPathSumRecursion(root.right);
+        /**
+         * 左孩子的最大路径
+         */
+        int maxLeft = maxPathSumRecursion(root.left);
+
+        /**
+         * 过这个节点的最大路径
+         * 跨越左右节点
+         */
+        maxPath = Math.max(maxPath,Math.max(0,maxLeft)+Math.max(0,maxRight)+root.val);
+
+        /**
+         * 不能跨越这个节点
+         * 因为跨越这个节点已经终止
+         * 所以最大的路径是包含这个节点的 左右子树的较大值
+         */
+        return root.val+ Math.max(Math.max(maxLeft,maxRight),0);
+
+
+    }
+
+    @Test
+    public void testMaxPathSum() {
+        log.info("maxPathSum = {}", maxPathSum(createTree(
+                new Integer[]{
+                        10,9,20,null,null,15,7
+//                        1, 2, 3
+                }
+        )));
+    }
 
 
 }

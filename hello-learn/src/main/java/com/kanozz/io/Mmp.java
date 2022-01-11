@@ -10,7 +10,7 @@ import java.nio.channels.FileChannel;
 public class Mmp {
     public static void main(String[] args) {
 
-        try (RandomAccessFile randomAccessFile = new RandomAccessFile("/Users/kano/Desktop/program/lettersong.jpg", "rw");
+        try (RandomAccessFile randomAccessFile = new RandomAccessFile("/Users/kano/Desktop/program/kano.txt", "rw");
              FileChannel channel = randomAccessFile.getChannel()) {
             MappedByteBuffer mappedByteBuffer = channel.map(FileChannel.MapMode.READ_WRITE, 0, 1024);
             Method[] methods = mappedByteBuffer.getClass().getMethods();

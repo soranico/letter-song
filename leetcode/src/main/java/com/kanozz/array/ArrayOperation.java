@@ -12,6 +12,12 @@ public class ArrayOperation {
     ////////////////  二分 ////////////////////////////////
 
 
+    /**
+     * 剑 53
+     * @param nums
+     * @param target
+     * @return
+     */
     public int search(int[] nums, int target) {
         int frequency = 0, low = 0, high = nums.length - 1, middle;
         while (low <= high) {
@@ -56,7 +62,7 @@ public class ArrayOperation {
         log.info("search = {}", search(new int[]{
 //                1,2,3,4,5,5,5,5,5,6,7,8,9
                 5, 7, 7, 8, 8, 10
-        }, 10));
+        }, 8));
     }
 
 
@@ -1162,6 +1168,63 @@ public class ArrayOperation {
         log.info("findLength = {}",findLength(
                 new int[]{ 0,0,0,0,0,0,1,0,0,0 },
                 new int[]{ 0,0,0,0,0,0,0,1,0,0 }));
+    }
+
+    /**
+     * 456
+     * 132 模式
+     * 单调栈
+     * @param nums
+     * @return
+     */
+    public boolean find132pattern(int[] nums) {
+        /**
+         *
+         * 对于索引 i j k (i < j < k) 此时需要
+         * nums[i] < nums[k] < nums[j]
+         * 只需要判断是不是存在这种情况,那么就仅需要
+         * (i,k) 之间存在一个  nums[j] > nums[k]
+         * 这个 nums[k] 是最大的一个 因为这样可以扩大
+         * nums[k] > nums[i] 的范围
+         *
+         */
+        ArrayDeque<Integer> numsKStack = new ArrayDeque<>();
+        int maxNumsK = Integer.MIN_VALUE, j;
+        for (int i = nums.length-1; i >=0 ; i--) {
+            /**
+             * nums[i] < nums[k]
+             * 此时的 nums[k] < nums[j]
+             *
+             *
+             * 这一步需要第一遍判断是因为
+             * 这步满足就已经存在 nums[j] > nums[k] 了
+             */
+            if (nums[i] < maxNumsK && numsKStack.size() >0 && numsKStack.peek() > maxNumsK){
+                return true;
+            }
+            /**
+             * 此时存在 nums[j] > nums[k]
+             * 弹出 nums[k] 再向前可以找到一个 nums[i]  < nums[k]
+             * 就满足了
+             * 找到最大的那个
+             */
+            j = i;
+            if(numsKStack.size() > 0 && maxNumsK < nums[j] ){
+                maxNumsK = Math.max(maxNumsK,numsKStack.pop());
+            }
+            numsKStack.push(nums[i]);
+
+        }
+        return false;
+    }
+
+    @Test
+    public void testFind132pattern(){
+        log.info("find132pattern = {}",find132pattern(
+                new int[]{
+                        3,5,0,3,4
+                }
+        ));
     }
 
 

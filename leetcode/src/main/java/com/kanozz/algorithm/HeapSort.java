@@ -75,12 +75,27 @@ public class HeapSort {
 
     public void buildHeap(int[] arr, int parent, int len) {
         int parentVal = arr[parent];
+        /**
+         * 找到左孩子
+         */
         int child = (parent << 1) + 1;
         while (child < len) {
+            /**
+             * 存在右孩子并且右孩子值大于左孩子
+             * 那么使用右孩子进行比较
+             */
             if (child + 1 < len && arr[child] < arr[child + 1]) {
                 child++;
             }
             // 此时在 child溜了一个坑下次肯定要填充child
+            /**
+             * 孩子节点的值大于父节点
+             * 则替换父节点值为孩子节点的值
+             * 同时更新当前父节点为孩子节点 也就是
+             * 将孩子当做一棵树来查找
+             *
+             * 此时初始父节点的值没有设置
+             */
             if (arr[child] > parentVal) {
                 arr[parent] = arr[child];
                 parent = child;
@@ -112,7 +127,7 @@ public class HeapSort {
     @Test
     public void testHeapSort() {
         log.info("heapSort = {}", heapSort(new int[]{
-                5, 2, 3, 4, 7,
+                5, 2, 3, 4, 7,-1
         }));
 
     }
