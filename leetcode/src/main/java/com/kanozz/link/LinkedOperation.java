@@ -465,8 +465,7 @@ public class LinkedOperation {
 
 
     /**
-     * 86
-     *
+     * 86 , 面试题 02.04
      //输入：head = [1,4,3,2,5,2], x = 3
      //输出：[1,2,2,4,3,5]
 
@@ -780,4 +779,82 @@ public class LinkedOperation {
                9,0,7,10,-1,-20,80,67
         }))));
     }
+
+    /**
+     * 445 两数相加||
+     * pass
+     * 翻转链表,每位上进行简单的数字相加,注意进位即可
+     */
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode head = new ListNode(),cur = head;
+        int carry = 0;
+        // 逆序链表
+        l1 = reverseListNode(l1);
+        l2 = reverseListNode(l2);
+        /**
+         * 两个链表相加
+         */
+        while (l1!=null && l2!=null){
+            ListNode node = new ListNode();
+            if (l1.val + l2.val + carry >= 10){
+                node.val = l1.val + l2.val + carry -10;
+                carry = 1;
+            }else {
+                node.val = l1.val + l2.val + carry;
+                carry = 0;
+            }
+            l1 = l1.next;
+            l2 = l2.next;
+            cur.next = node;
+            cur = cur.next;
+        }
+        l1 = l1==null?l2:l1;
+
+        while (l1!=null){
+            if (l1.val + carry >=10){
+                l1.val = l1.val + carry -10;
+                carry = 1;
+            }else {
+                l1 .val = l1.val + carry;
+                carry = 0;
+            }
+            cur.next = l1;
+            l1 = l1.next;
+            cur = cur.next;
+        }
+        /**
+         * 此时产生了一个进位所以在首位加一位
+         */
+        if (carry!=0){
+            cur.next = new ListNode(1);
+        }
+        return reverseListNode(head.next);
+    }
+
+    private ListNode reverseListNode(ListNode head){
+        ListNode pre = null,cur = head;
+        while (cur!=null){
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
+
+    @Test
+    public void testAddTwoNumbers(){
+        log.info("addTwoNumbers = {}",listPrint(addTwoNumbers(getHead(
+                new int[]{
+                       0
+                })
+        ,getHead(
+                new int[]{
+                       5,6,4
+                }
+                ))));
+    }
+
+
+
 }

@@ -1178,6 +1178,9 @@ public class ArrayOperation {
      * @return
      */
     public boolean find132pattern(int[] nums) {
+        if (nums.length < 3){
+            return false;
+        }
         /**
          *
          * 对于索引 i j k (i < j < k) 此时需要
@@ -1191,28 +1194,18 @@ public class ArrayOperation {
         ArrayDeque<Integer> numsKStack = new ArrayDeque<>();
         int maxNumsK = Integer.MIN_VALUE, j;
         for (int i = nums.length-1; i >=0 ; i--) {
-            /**
-             * nums[i] < nums[k]
-             * 此时的 nums[k] < nums[j]
-             *
-             *
-             * 这一步需要第一遍判断是因为
-             * 这步满足就已经存在 nums[j] > nums[k] 了
-             */
-            if (nums[i] < maxNumsK && numsKStack.size() >0 && numsKStack.peek() > maxNumsK){
+            if (nums[i] < maxNumsK){
                 return true;
             }
             /**
-             * 此时存在 nums[j] > nums[k]
-             * 弹出 nums[k] 再向前可以找到一个 nums[i]  < nums[k]
-             * 就满足了
-             * 找到最大的那个
+             * 找到最接近当前 nums[j] 的 nums[k]
              */
             j = i;
-            if(numsKStack.size() > 0 && maxNumsK < nums[j] ){
-                maxNumsK = Math.max(maxNumsK,numsKStack.pop());
+            while (!numsKStack.isEmpty() && nums[j] > numsKStack.peekLast()){
+                maxNumsK = Math.max(maxNumsK,numsKStack.pollLast());
             }
             numsKStack.push(nums[i]);
+
 
         }
         return false;
@@ -1220,11 +1213,12 @@ public class ArrayOperation {
 
     @Test
     public void testFind132pattern(){
-        log.info("find132pattern = {}",find132pattern(
-                new int[]{
-                        3,5,0,3,4
-                }
-        ));
+//        log.info("find132pattern = {}",find132pattern(
+//                new int[]{
+//                        1,3,2,4,5,6,7,8,9,10
+//                }
+//        ));
+
     }
 
 

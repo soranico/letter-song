@@ -37,16 +37,30 @@ public class Algorithm {
         }
         int low = start, high = end, base = nums[low];
         while (low < high) {
-            // 从右找一个比基准小的
+            /**
+             * 从 low - high 找到第一个比 基准数
+             * 小的数字
+             */
             while (low < high && nums[high] >= base) {
                 high--;
             }
+            /**
+             * 找到了移到基准数的左边
+             * 此时 high 指针的位置
+             * 是一个待放入的位置
+             */
             if (low < high) {
                 nums[low] = nums[high];
             }
+            /**
+             * 找到第一个比基准数大的数字
+             */
             while (low < high && nums[low] <= base) {
                 low++;
             }
+            /**
+             * 找到了移动到基准数的右边
+             */
             if (low < high) {
                 nums[high] = nums[low];
             }

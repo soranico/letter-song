@@ -1,0 +1,49 @@
+class Solution {
+    public boolean find132pattern(int[] nums) {
+
+        /**
+         *
+         * 对于索引 i j k (i < j < k) 此时需要
+         * nums[i] < nums[k] < nums[j]
+         * 只需要判断是不是存在这种情况,那么就仅需要
+         * (i,k) 之间存在一个  nums[j] > nums[k]
+         * 这个 nums[k] 是最大的一个 因为这样可以扩大
+         * nums[k] > nums[i] 的范围
+         *
+         */
+        ArrayDeque<Integer> numsKStack = new ArrayDeque<>();
+        int maxNumsK = Integer.MIN_VALUE, j;
+        for (int i = nums.length-1; i >=0 ; i--) {
+            /**
+             * nums[i] < nums[k]
+             * 此时的 nums[k] < nums[j]
+             *
+             *
+             * 这一步需要第一遍判断是因为
+             * 这步满足就已经存在 nums[j] > nums[k] 了
+             */
+            if (nums[i] < maxNumsK && numsKStack.size() >0 && numsKStack.peek() > maxNumsK){
+                return true;
+            }
+            /**
+             * 此时存在 nums[j] > nums[k]
+             * 弹出 nums[k] 再向前可以找到一个 nums[i]  < nums[k]
+             * 就满足了
+             */
+            j = i;
+            if(numsKStack.size() > 0 && maxNumsK < nums[j] ){
+                maxNumsK = numsKStack.pop();
+            }
+            numsKStack.push(nums[i]);
+
+        }
+        return false;
+
+    }
+}
+
+//total_testcases:102
+//total_correct:80
+//input_formatted:[3,5,0,3,4]
+//expected_output:true
+//code_output:false
