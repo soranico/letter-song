@@ -946,7 +946,7 @@ public class LinkedOperation {
     /**
      * 面试题 02.05
      * 链表求和
-     *
+     * pass
      * 链表初始是逆序的,结果也是逆序的
      * @param l1
      * @param l2
