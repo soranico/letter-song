@@ -943,4 +943,71 @@ public class LinkedOperation {
     }
 
 
+    /**
+     * 面试题 02.05
+     * 链表求和
+     *
+     * 链表初始是逆序的,结果也是逆序的
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public ListNode addTwoNumbersAudition(ListNode l1, ListNode l2) {
+        ListNode head = new ListNode(),cur = head;
+        int carry = 0;
+        /**
+         * 两个链表相加,直接使用已经存在链表节点即可
+         * 没有必要重新创建新的节点来赋值,减少内存占用
+         */
+        while (l1!=null && l2!=null){
+            if (l1.val + l2.val + carry >= 10){
+                l1.val = l1.val + l2.val + carry -10;
+                carry = 1;
+            }else {
+                l1.val = l1.val + l2.val + carry;
+                carry = 0;
+            }
+            cur.next = l1;
+            l1 = l1.next;
+            l2 = l2.next;
+            cur = cur.next;
+        }
+        l1 = l1==null?l2:l1;
+
+        while (l1!=null){
+            if (l1.val + carry >=10){
+                l1.val = l1.val + carry -10;
+                carry = 1;
+            }else {
+                l1 .val = l1.val + carry;
+                carry = 0;
+            }
+            cur.next = l1;
+            l1 = l1.next;
+            cur = cur.next;
+        }
+        /**
+         * 此时产生了一个进位所以在首位加一位
+         */
+        if (carry!=0){
+            cur.next = new ListNode(1);
+        }
+        return head.next;
+    }
+
+    @Test
+    public void testAddTwoNumbersAudition(){
+        log.info("addTwoNumbersAudition = {}",listPrint(
+                addTwoNumbersAudition(
+                        getHead(new int[]{
+                                6,1,7
+                        }),
+                        getHead(new int[]{
+                                2,9,5
+                        })
+                )
+        ));
+    }
+
+
 }
